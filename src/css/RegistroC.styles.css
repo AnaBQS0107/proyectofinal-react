@@ -1,4 +1,10 @@
-.register-form {
+* {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .register-form {
     background-color: #b27a48; 
     padding: 2rem;
     border-radius: 1rem;
@@ -6,6 +12,7 @@
 }
 
 .register-form h2 {
+    font-family: 'Playfair Display', serif;
     color: #fff; 
     text-align: center;
     margin-bottom: 2rem;
