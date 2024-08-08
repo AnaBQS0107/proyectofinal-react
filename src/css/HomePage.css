@@ -1,6 +1,7 @@
 /* General Styles */
 body {
   font-family: 'Playfair Display', serif;
+  font-size: 18px;
   margin: 0;
   padding: 0;
 }
@@ -26,9 +27,10 @@ body {
   align-items: center;
   height: 80vh;
   background-image: url('../img/Fondo.png');
-  background-size: cover;
+  background-size: cover; 
   background-position: center;
 }
+
 
 .hero-content {
   text-align: center;
@@ -74,7 +76,7 @@ body {
   color: #f4f4f4;
   margin: 1rem;
   flex: 1;
-  max-width: 700px; /* Ajusta el ancho máximo si es necesario */
+  max-width: 700px;
 }
 
 .mission i, .vision i, .info-item i {
@@ -84,13 +86,13 @@ body {
 }
 
 .mission h2, .vision h2, .info-item h3 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
   margin-bottom: 1rem;
 }
 
 .mission p, .vision p, .info-item p {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   line-height: 1.6;
 }
 

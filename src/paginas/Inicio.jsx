@@ -32,7 +32,7 @@ const ExklusivPage = () => {
         </div>
         <div className="info-item">
           <i className="pi pi-fw pi-phone"></i> 
-          <h3>Contactos</h3>
+          <h3>Contacto</h3>
           <p>Número telefonico: +506 1234 5678</p>
 
         </div>

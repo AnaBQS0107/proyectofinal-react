@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 import Inicio from './paginas/Inicio';
 import Navbar from './componentes/navbar';
-import RegistroClientes from './paginas/RegistroClientes';
 import RegistroClientes from './paginas/RegistroCliente';
 
 
