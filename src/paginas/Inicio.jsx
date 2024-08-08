@@ -7,7 +7,6 @@ const ExklusivPage = () => {
   return (
     <div>
       <div className="hero">
-        {/* Aquí puedes agregar contenido para la sección hero si es necesario */}
       </div>
       <div className="mission-vision">
         <div className="mission">
@@ -27,14 +26,14 @@ const ExklusivPage = () => {
       </div>
       <div className="info-section">
         <div className="info-item">
-          <i className="pi pi-fw pi-shopping-bag"></i> {/* Icono de tienda */}
+          <i className="pi pi-fw pi-shopping-bag"></i> 
           <h3>Tienda Principal</h3>
           <p>Ubicada en Calle Principal, San José, Costa Rica</p>
         </div>
         <div className="info-item">
-          <i className="pi pi-fw pi-phone"></i> {/* Icono de teléfono */}
+          <i className="pi pi-fw pi-phone"></i> 
           <h3>Contactos</h3>
-          <p>Teléfono: +506 1234 5678</p>
+          <p>Número telefonico: +506 1234 5678</p>
 
         </div>
       </div>

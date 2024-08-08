@@ -57,129 +57,64 @@ body {
   border-color: #b27a48;
 }
 
-.mission-vision {
+.mission-vision, .info-section {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #1c1c1c;
   padding: 4rem 2rem;
+  flex-wrap: wrap;
 }
 
-.mission,
-.vision {
+.mission, .vision, .info-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   color: #f4f4f4;
-  margin: 0 2rem;
+  margin: 1rem;
+  flex: 1;
+  max-width: 700px; /* Ajusta el ancho máximo si es necesario */
 }
 
-.mission i,
-.vision i {
+.mission i, .vision i, .info-item i {
   font-size: 3rem;
   color: #c68c53;
   margin-bottom: 1rem;
 }
 
-.mission h2,
-.vision h2 {
+.mission h2, .vision h2, .info-item h3 {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1rem;
 }
 
-.mission p,
-.vision p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-/* Nueva sección: tienda y contactos */
-.info-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #1c1c1c;
-  padding: 4rem 2rem;
-}
-
-.info-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  color: #f4f4f4;
-  margin: 0 2rem;
-}
-
-.info-item i {
-  font-size: 3rem;
-  color: #c68c53;
-  margin-bottom: 1rem;
-}
-
-.info-item h3 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.info-item p {
+.mission p, .vision p, .info-item p {
   font-size: 1.1rem;
   line-height: 1.6;
 }
 
 /* Ajustes para pantallas móviles */
 @media (max-width: 768px) {
-  .info-section {
+  .mission-vision, .info-section {
     flex-direction: column;
     padding: 2rem 1rem;
   }
 
-  .info-item {
+  .mission, .vision, .info-item {
     margin: 1rem 0;
+    max-width: 100%;
   }
 
-  .info-item i {
+  .mission i, .vision i, .info-item i {
     font-size: 2.5rem;
   }
 
-  .info-item h3 {
+  .mission h2, .vision h2, .info-item h3 {
     font-size: 1.5rem;
   }
 
-  .info-item p {
-    font-size: 1rem;
-  }
-}
-
-
-
-/* Media Query for Mobile Devices */
-@media (max-width: 768px) {
-  .mission-vision {
-    flex-direction: column;
-    padding: 2rem 1rem;
-  }
-
-  .mission,
-  .vision {
-    margin: 1rem 0;
-  }
-
-  .mission i,
-  .vision i {
-    font-size: 2.5rem;
-  }
-
-  .mission h2,
-  .vision h2 {
-    font-size: 1.5rem;
-  }
-
-  .mission p,
-  .vision p {
+  .mission p, .vision p, .info-item p {
     font-size: 1rem;
   }
 }
