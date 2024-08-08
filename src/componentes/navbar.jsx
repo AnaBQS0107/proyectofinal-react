@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
-import '../css/Navbar.css'; // Asegúrate de crear este archivo CSS
+import '../css/Navbar.css'; 
 
 function Navbar() {
   const [visible, setVisible] = useState(false);
@@ -25,19 +25,18 @@ function Navbar() {
               navigate('/');
               setVisible(false);
             }}
-            className="p-button-text navbar-menu-item"
+            className="p-button-text navbar-menu-item" 
             style={{ width: '100%' }}
           />
-           <Button 
-          label="Registro de Clientes" 
-          onClick={() => {
-            navigate('/RegistroC'); 
-            setVisible(false); 
-          }} 
-          className="p-button-text" 
-          style={{ width: '100%', marginTop: '10px' }} 
-        />
-        
+          <Button
+            label="Registro de Clientes"
+            onClick={() => {
+              navigate('/RegistroC');
+              setVisible(false);
+            }}
+            className="p-button-text navbar-menu-item" 
+            style={{ width: '100%', marginTop: '10px' }}
+          />
         </div>
       </Sidebar>
     </div>

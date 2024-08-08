@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import '../css/RegistroC.styles.css';
 import { Toast } from 'primereact/toast';
+import '../css/RegistroC.styles.css';
 
 function RegistroClientes() {
   const [cedula, setCedula] = useState('');
@@ -10,7 +10,7 @@ function RegistroClientes() {
   const [direccion, setDireccion] = useState('');
   const [telefono, setTelefono] = useState('');
   const [correo, setCorreo] = useState('');
-  const toast = React.useRef(null);
+  const toast = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,10 +18,10 @@ function RegistroClientes() {
   };
 
   return (
-    <div className="register-form p-grid p-dir-col p-align-center" style={{ maxWidth: '600px', margin: '0 auto' }}>
+    <div className="register-form p-grid p-dir-col p-align-center">
       <Toast ref={toast} />
       <div className="p-col">
-        <h2 className="register-form__title">Registro de Cliente</h2>
+        <h2 className="register-form__title">Registro de Clientes</h2>
         <form onSubmit={handleSubmit} className="p-fluid">
           <div className="p-field">
             <label htmlFor="cedula" className="register-form__label">Cédula</label>
