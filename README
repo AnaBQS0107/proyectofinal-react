@@ -1,0 +1,48 @@
+CREATE DATABASE SolucionesPH;
+
+USE SolucionesPH;
+
+CREATE TABLE Productos (
+    IdProducto INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100),
+    Fotografia NVARCHAR(255),
+    ColoresEstilos NVARCHAR(255),
+    CantidadDisponible INT,
+    Costo DECIMAL(10,2)
+);
+
+CREATE TABLE Inventarios (
+    IdInventario INT PRIMARY KEY IDENTITY(1,1),
+    IdProducto INT FOREIGN KEY REFERENCES Productos(IdProducto),
+    Cantidad INT,
+    Fotografia NVARCHAR(255),
+    Costo DECIMAL(10,2),
+    Codigo NVARCHAR(50),
+    UbicacionBodega NVARCHAR(100)
+);
+
+CREATE TABLE Clientes (
+    IdCliente INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100),
+    Direccion NVARCHAR(255),
+    Telefono NVARCHAR(20),
+    CorreoElectronico NVARCHAR(100)
+);
+
+
+CREATE TABLE Pedidos (
+    IdPedido INT PRIMARY KEY IDENTITY(1,1),
+    IdCliente INT FOREIGN KEY REFERENCES Clientes(IdCliente),
+    Fecha DATETIME,
+    Estado NVARCHAR(50) 
+);
+
+CREATE TABLE DetallesPedidos (
+    IdDetalle INT PRIMARY KEY IDENTITY(1,1),
+    IdPedido INT FOREIGN KEY REFERENCES Pedidos(IdPedido),
+    IdProducto INT FOREIGN KEY REFERENCES Productos(IdProducto),
+    Cantidad INT,
+    Costo DECIMAL(10,2) 
+);
+
+CREATE INDEX IDX_Productos_Nombre ON Productos(Nombre);
