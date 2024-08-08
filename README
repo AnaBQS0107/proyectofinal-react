@@ -194,3 +194,25 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+--INSERTS
+USE [mydb]
+GO
+
+-- Inserción en la tabla CatalogoEstados
+INSERT INTO [dbo].[CatalogoEstados] ([NombreEstado])
+VALUES 
+    ('En preparación'),
+    ('Listo para envío o recolección'),
+    ('Entregado al cliente');
+GO
+
+-- Inserción en la tabla CatalogoEstantes
+INSERT INTO [dbo].[CatalogoEstantes] ([Nombre])
+VALUES
+    ('Estante 1'),
+    ('Estante 2'),
+    ('Estante 3'),
+    ('Estante 4'),
+    ('Estante 5');
+GO
