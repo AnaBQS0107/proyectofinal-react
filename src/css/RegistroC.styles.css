@@ -1,0 +1,45 @@
+.register-form {
+    background-color: #b27a48; /* Fondo color beige claro */
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+}
+
+.register-form h2 {
+    color: #fff; /* Color blanco para el texto */
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.register-form .p-field {
+    margin-bottom: 1.5rem;
+}
+
+.register-form .p-field label {
+    color: #fff; /* Color blanco para las etiquetas */
+    font-weight: bold;
+}
+
+.register-form .p-inputtext {
+    background-color: #fff; /* Fondo blanco para los campos de entrada */
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: #333; /* Color oscuro para el texto de los campos */
+}
+
+.register-form .p-button {
+    background-color: #000; /* Color negro para el botón */
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-form .p-button:hover {
+    background-color: #333; /* Color negro oscuro al pasar el ratón */
+}
