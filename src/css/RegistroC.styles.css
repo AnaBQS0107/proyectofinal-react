@@ -3,13 +3,16 @@
     padding: 2.5rem;
     border-radius: 1.5rem;
     box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+    margin: 10rem auto; 
+    width: 100%; 
+    max-width: 650px; 
 }
 
 .register-form__title {
     color: #5b4539; 
     font-family: 'Playfair Display', serif;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 
 .register-form .p-field {
@@ -24,11 +27,11 @@
     margin-bottom: 0.5rem;
 }
 
-.register-form .p-inputtext {
+.register-form__input {
     background-color: #fff;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.75rem 1rem;
+    border: 1px solid #dcd2c8;
+    border-radius: 0.75rem;
+    padding: 1rem;
     font-size: 1rem;
     color: #5b4539; 
     font-family: 'Montserrat', sans-serif;
@@ -53,6 +56,6 @@
     transition: background-color 0.3s ease;
 }
 
-.register-form .p-button:hover {
-    background-color: #333; 
+.register-form__button:hover {
+    background-color: #a16a3e !important; 
 }
