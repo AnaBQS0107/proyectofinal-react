@@ -1,0 +1,99 @@
+/* General Styles */
+body {
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar Styles */
+.p-menubar {
+  background-color: #2d2d2d;
+  border: none;
+}
+
+.p-menubar .p-menuitem-link {
+  color: #f4f4f4;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.p-menubar .p-menuitem-link:hover {
+  color: #c68c53;
+}
+
+/* Hero Section Styles */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-image: url('../img/Fondo.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  text-align: center;
+  color: #000000;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.p-button-danger {
+  background-color: #c68c53;
+  border-color: #c68c53;
+  color: #f4f4f4;
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.p-button-danger:hover {
+  background-color: #b27a48;
+  border-color: #b27a48;
+}
+
+/* Mission and Vision Styles */
+.mission-vision {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1c1c;
+  padding: 4rem 2rem;
+}
+
+.mission,
+.vision {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #f4f4f4;
+  margin: 0 2rem;
+}
+
+.mission i,
+.vision i {
+  font-size: 3rem;
+  color: #c68c53;
+  margin-bottom: 1rem;
+}
+
+.mission h2,
+.vision h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.mission p,
+.vision p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
