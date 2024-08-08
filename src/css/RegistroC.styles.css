@@ -1,0 +1,45 @@
+.register-form {
+    background-color: #b27a48; 
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+}
+
+.register-form h2 {
+    color: #fff; 
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.register-form .p-field {
+    margin-bottom: 1.5rem;
+}
+
+.register-form .p-field label {
+    color: #fff; 
+    font-weight: bold;
+}
+
+.register-form .p-inputtext {
+    background-color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: #333; 
+}
+
+.register-form .p-button {
+    background-color: #000;
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-form .p-button:hover {
+    background-color: #333; 
+}

@@ -28,7 +28,16 @@ function Navbar() {
             className="p-button-text navbar-menu-item"
             style={{ width: '100%' }}
           />
-          {/* Agrega más enlaces de navegación aquí */}
+           <Button 
+          label="Registro de Clientes" 
+          onClick={() => {
+            navigate('/RegistroC'); 
+            setVisible(false); 
+          }} 
+          className="p-button-text" 
+          style={{ width: '100%', marginTop: '10px' }} 
+        />
+        
         </div>
       </Sidebar>
     </div>
