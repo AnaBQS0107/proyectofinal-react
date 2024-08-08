@@ -6,24 +6,36 @@ import '../css/HomePage.css';
 const ExklusivPage = () => {
   return (
     <div>
-   
       <div className="hero">
-
+        {/* Aquí puedes agregar contenido para la sección hero si es necesario */}
       </div>
       <div className="mission-vision">
         <div className="mission">
           <i className="pi pi-fw pi-eye"></i>
           <h2>Misión</h2>
           <p>
-          Ser un proveedor de confianza para los clientes, brindando productos de calidad
+            Ser un proveedor de confianza para los clientes, brindando productos de calidad.
           </p>
         </div>
         <div className="vision">
           <i className="pi pi-fw pi-chart-line"></i>
           <h2>Visión</h2>
           <p>
-          Ser la empresa distribuidora de productos N°1 en el territorio costarricense
+            Ser la empresa distribuidora de productos N°1 en el territorio costarricense.
           </p>
+        </div>
+      </div>
+      <div className="info-section">
+        <div className="info-item">
+          <i className="pi pi-fw pi-shopping-bag"></i> {/* Icono de tienda */}
+          <h3>Tienda Principal</h3>
+          <p>Ubicada en Calle Principal, San José, Costa Rica</p>
+        </div>
+        <div className="info-item">
+          <i className="pi pi-fw pi-phone"></i> {/* Icono de teléfono */}
+          <h3>Contactos</h3>
+          <p>Teléfono: +506 1234 5678</p>
+
         </div>
       </div>
     </div>
