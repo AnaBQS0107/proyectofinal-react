@@ -37,6 +37,15 @@ function Navbar() {
             className="p-button-text navbar-menu-item" 
             style={{ width: '100%', marginTop: '10px' }}
           />
+            <Button
+            label="Registro de empleados"
+            onClick={() => {
+              navigate('/RegistroE');
+              setVisible(false);
+            }}
+            className="p-button-text navbar-menu-item" 
+            style={{ width: '100%', marginTop: '10px' }}
+          />
         </div>
       </Sidebar>
     </div>

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Inicio from './paginas/Inicio';
 import Navbar from './componentes/navbar';
 import RegistroClientes from './paginas/RegistroClientes';
+import RegistroEmpleados from './paginas/RegistroEmpleados';
 
 
 
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/RegistroC" element={<RegistroClientes />} />
+          <Route path="/RegistroE" element={<RegistroEmpleados />} />
         </Routes>
       </div>
     </Router>
