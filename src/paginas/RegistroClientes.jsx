@@ -3,20 +3,45 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import '../css/RegistroC.styles.css';
+import { insertarCliente } from '../api/clientes.api'; 
 
 function RegistroClientes() {
   const [cedula, setCedula] = useState('');
   const [nombre, setNombre] = useState('');
+  const [apellido1, setApellido1] = useState('');
+  const [apellido2, setApellido2] = useState('');
   const [direccion, setDireccion] = useState('');
   const [telefono, setTelefono] = useState('');
   const [correo, setCorreo] = useState('');
   const toast = useRef(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Cliente registrado correctamente', life: 3000 });
-  };
 
+
+    const idCedula = Number(cedula);
+
+
+    if (isNaN(idCedula)) {
+      toast.current.show({ severity: 'error', summary: 'Error', detail: 'El número de cédula no es válido', life: 3000 });
+      return;
+    }
+
+    try {
+      await insertarCliente({
+        idCedula: idCedula,
+        nombre: nombre,
+        apellido1: apellido1,
+        apellido2: apellido2,
+        direccion: direccion,
+        telefono: telefono,
+        correoElectronico: correo
+      });
+      toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Cliente registrado correctamente', life: 3000 });
+    } catch (error) {
+      toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo registrar el cliente', life: 3000 });
+    }
+  };
   return (
     <div className="register-form p-grid p-dir-col p-align-center">
       <Toast ref={toast} />
@@ -41,6 +66,28 @@ function RegistroClientes() {
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
               placeholder="Ingrese su nombre"
+              className="register-form__input"
+              required
+            />
+          </div>
+          <div className="p-field">
+            <label htmlFor="apellido1" className="register-form__label">Primer apellido</label>
+            <InputText
+              id="apellido1"
+              value={apellido1}
+              onChange={(e) => setApellido1(e.target.value)}
+              placeholder="Ingrese su primer apellido"
+              className="register-form__input"
+              required
+            />
+          </div>
+          <div className="p-field">
+            <label htmlFor="apellido2" className="register-form__label">Segundo apellido</label>
+            <InputText
+              id="apellido2"
+              value={apellido2}
+              onChange={(e) => setApellido2(e.target.value)}
+              placeholder="Ingrese su segundo apellido"
               className="register-form__input"
               required
             />
