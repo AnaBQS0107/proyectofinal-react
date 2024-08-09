@@ -3,7 +3,7 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import '../css/RegistroC.styles.css';
-import { insertarCliente } from '../api/clientes.api'; 
+import { insertarCliente } from '../api/clientes.api';
 
 function RegistroClientes() {
   const [cedula, setCedula] = useState('');
@@ -13,6 +13,7 @@ function RegistroClientes() {
   const [direccion, setDireccion] = useState('');
   const [telefono, setTelefono] = useState('');
   const [correo, setCorreo] = useState('');
+  const [contrasena, setContrasena] = useState(''); 
   const toast = useRef(null);
 
   const handleSubmit = async (e) => {
@@ -33,7 +34,8 @@ function RegistroClientes() {
         apellido2: apellido2,
         direccion: direccion,
         telefono: telefono,
-        correoElectronico: correo
+        correoElectronico: correo,
+        contrasena: contrasena 
       });
       toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Cliente registrado correctamente', life: 3000 });
     } catch (error) {
@@ -120,6 +122,18 @@ function RegistroClientes() {
               value={correo}
               onChange={(e) => setCorreo(e.target.value)}
               placeholder="Ingrese su correo electrónico"
+              className="register-form__input"
+              required
+            />
+          </div>
+          <div className="p-field"> 
+            <label htmlFor="contrasena" className="register-form__label">Contraseña</label>
+            <InputText
+              id="contrasena"
+              type="password"
+              value={contrasena}
+              onChange={(e) => setContrasena(e.target.value)}
+              placeholder="Ingrese su contraseña"
               className="register-form__input"
               required
             />
