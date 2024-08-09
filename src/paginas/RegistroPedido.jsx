@@ -16,9 +16,9 @@ function RegistroPedidos() {
   const toast = useRef(null);
 
   const estantes = [
-    { label: 'Estante 1', value: 'estante1' },
-    { label: 'Estante 2', value: 'estante2' },
-    { label: 'Estante 3', value: 'estante3' }
+    { label: 'Estante 1', value: '1' },
+    { label: 'Estante 2', value: '2' },
+    { label: 'Estante 3', value: '3' }
   ];
 
   // Función para calcular el precio con IVA
