@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const insertarCliente = async (clienteNuevo) => {
+export const insertarProducto = async (ProductoNuevo) => {
     try {
-        const response = await axios.post('http://localhost:4000/insertarCliente', clienteNuevo);
+        const response = await axios.post('http://localhost:4000/insertarProducto', ProductoNuevo);
         return response.data; 
     } catch (error) {
         console.error('Error al insertar cliente:', error);

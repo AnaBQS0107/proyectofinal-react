@@ -47,7 +47,7 @@ function Navbar() {
             style={{ width: '100%', marginTop: '10px' }}
           />
                <Button
-            label="Registro de Pedidos"
+            label="Registro de Productos"
             onClick={() => {
               navigate('/RegistroP');
               setVisible(false);

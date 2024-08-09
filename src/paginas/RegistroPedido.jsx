@@ -1,11 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import { Dropdown } from 'primereact/dropdown';
 import '../css/RegistroC.styles.css';
+import { insertarProducto } from '../api/producto.api'; // Importación de la función
 
-function RegistroPedidos() {
+function RegistroProducto() {
   const [nombreProducto, setNombreProducto] = useState('');
   const [cantidadStock, setCantidadStock] = useState('');
   const [precioSinIVA, setPrecioSinIVA] = useState('');
@@ -14,16 +15,56 @@ function RegistroPedidos() {
   const [imagen, setImagen] = useState(null);
   const toast = useRef(null);
 
-  // Opciones para el combo box de estantes
   const estantes = [
-    { label: 'Estante 1', value: 'estante1' },
-    { label: 'Estante 2', value: 'estante2' },
-    { label: 'Estante 3', value: 'estante3' }
+    { label: 'Estante 1', value: '1' },
+    { label: 'Estante 2', value: '2' },
+    { label: 'Estante 3', value: '3' }
   ];
 
-  const handleSubmit = (e) => {
+  const calcularPrecioConIVA = (precio) => {
+    const IVA = 0.13; // Asumiendo que el IVA es del 13%
+    return precio * (1 + IVA);
+  };
+
+  useEffect(() => {
+    const precioSinIVA_Numero = parseFloat(precioSinIVA);
+    if (!isNaN(precioSinIVA_Numero)) {
+      const precioConIVA_Numero = calcularPrecioConIVA(precioSinIVA_Numero);
+      setPrecioConIVA(precioConIVA_Numero.toFixed(2));
+    } else {
+      setPrecioConIVA('');
+    }
+  }, [precioSinIVA]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Pedido registrado correctamente', life: 3000 });
+
+    const precioSinIVA_Numero = parseFloat(precioSinIVA);
+    const cantidadStock_Numero = parseInt(cantidadStock);
+
+    if (isNaN(precioSinIVA_Numero)) {
+      toast.current.show({ severity: 'error', summary: 'Error', detail: 'El precio sin IVA no es válido', life: 3000 });
+      return;
+    }
+
+    if (isNaN(cantidadStock_Numero)) {
+      toast.current.show({ severity: 'error', summary: 'Error', detail: 'La cantidad en stock no es válida', life: 3000 });
+      return;
+    }
+
+    try {
+      await insertarProducto({
+        nombre: nombreProducto,
+        cantidadStock: cantidadStock_Numero,
+        precioSinIVA: precioSinIVA_Numero,
+        precioConIVA: parseFloat(precioConIVA),
+        estante: estante,
+        imagen: imagen // Aquí deberías manejar la carga de la imagen según tu API
+      });
+      toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Producto registrado correctamente', life: 3000 });
+    } catch (error) {
+      toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo registrar el producto', life: 3000 });
+    }
   };
 
   const handleImageChange = (e) => {
@@ -77,7 +118,6 @@ function RegistroPedidos() {
             <InputText
               id="precioConIVA"
               value={precioConIVA}
-              onChange={(e) => setPrecioConIVA(e.target.value)}
               placeholder="Precio calculado automáticamente"
               className="register-form__input"
               disabled // Deshabilita el campo de texto
@@ -118,4 +158,4 @@ function RegistroPedidos() {
   );
 }
 
-export default RegistroPedidos;
+export default RegistroProducto;
