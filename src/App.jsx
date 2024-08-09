@@ -7,6 +7,7 @@ import RegistroClientes from './paginas/RegistroClientes';
 import RegistroPedidos from './paginas/RegistroPedido';
 
 import RegistroEmpleados from './paginas/RegistroEmpleados';
+import LoginSesion from './paginas/LoginSesion';
 
 
 
@@ -24,6 +25,7 @@ function App() {
 
           <Route path="/RegistroE" element={<RegistroEmpleados />} />
 
+          <Route path="/login" element={<LoginSesion />} />
         </Routes>
       </div>
     </Router>

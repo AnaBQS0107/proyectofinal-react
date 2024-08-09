@@ -1,0 +1,62 @@
+.sign-up-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .form-overlay {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(63, 63, 63, 0.8); /* Fondo oscuro semi-transparente */
+  }
+  
+  .form-card {
+    width: 400px;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente el contenido */
+    text-align: center; /* Centrar el texto dentro de la tarjeta */
+  }
+  
+  .form-card h2 {
+    color: #b27a48; /* Color dorado */
+    margin-bottom: 2rem;
+  }
+  
+  .p-field {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center; /* Centrar el contenido del campo */
+  }
+  
+  .p-button-rounded {
+    background-color: #b27a48; /* Color dorado */
+    border-color: #b27a48; /* Color dorado */
+    width: 100%;
+  }
+  
+  .p-inputtext {
+    width: 100%;
+  }
+  
+  /* Estilos responsivos */
+  @media screen and (max-width: 768px) {
+    .form-overlay {
+      width: 100%;
+    }
+    
+    .form-card {
+      width: 90%;
+    }
+  }
+  

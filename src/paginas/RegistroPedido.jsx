@@ -30,14 +30,13 @@ function RegistroPedidos() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Crear el objeto de datos del producto
     const productoData = {
       nombre: nombreProducto,
       stock: cantidadStock,
       precio: precioSinIVA,
       precioIVA: precioConIVA,
       catalogoEstantesId: estante,
-      imagen: imagen, // Envía solo el nombre del archivo
+      imagen: imagen,
     };
 
     try {

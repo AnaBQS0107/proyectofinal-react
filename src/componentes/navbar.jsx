@@ -21,6 +21,7 @@ function Navbar() {
         <div className="navbar-menu">
           <Button
             label="Inicio"
+            icon="pi pi-home"
             onClick={() => {
               navigate('/');
               setVisible(false);
@@ -29,7 +30,18 @@ function Navbar() {
             style={{ width: '100%' }}
           />
           <Button
+            label="Login"
+            icon="pi pi-user"
+            onClick={() => {
+              navigate('/login');
+              setVisible(false);
+            }}
+            className="p-button-text navbar-menu-item" 
+            style={{ width: '100%', marginTop: '10px' }}
+          />
+          <Button
             label="Registro de Clientes"
+            icon="pi pi-user"
             onClick={() => {
               navigate('/RegistroC');
               setVisible(false);
@@ -38,7 +50,8 @@ function Navbar() {
             style={{ width: '100%', marginTop: '10px' }}
           />
           <Button
-            label="Registro de empleados"
+            label="Registro de Empleados"
+            icon="pi pi-users"
             onClick={() => {
               navigate('/RegistroE');
               setVisible(false);
@@ -46,8 +59,9 @@ function Navbar() {
             className="p-button-text navbar-menu-item" 
             style={{ width: '100%', marginTop: '10px' }}
           />
-               <Button
+          <Button
             label="Registro de Productos"
+            icon="pi pi-box"
             onClick={() => {
               navigate('/RegistroP');
               setVisible(false);
