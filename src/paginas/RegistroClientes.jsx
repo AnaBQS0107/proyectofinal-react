@@ -18,9 +18,7 @@ function RegistroClientes() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
     const idCedula = Number(cedula);
-
 
     if (isNaN(idCedula)) {
       toast.current.show({ severity: 'error', summary: 'Error', detail: 'El número de cédula no es válido', life: 3000 });
@@ -42,6 +40,7 @@ function RegistroClientes() {
       toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo registrar el cliente', life: 3000 });
     }
   };
+
   return (
     <div className="register-form p-grid p-dir-col p-align-center">
       <Toast ref={toast} />

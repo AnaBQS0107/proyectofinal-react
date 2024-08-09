@@ -12,7 +12,7 @@ function RegistroPedidos() {
   const [precioSinIVA, setPrecioSinIVA] = useState('');
   const [precioConIVA, setPrecioConIVA] = useState('');
   const [estante, setEstante] = useState('');
-  const [imagen, setImagen] = useState(''); // Almacena solo el nombre del archivo
+  const [imagen, setImagen] = useState('');
   const toast = useRef(null);
 
   const estantes = [
@@ -21,9 +21,9 @@ function RegistroPedidos() {
     { label: 'Estante 3', value: '3' }
   ];
 
-  // Función para calcular el precio con IVA
+
   const calcularPrecioConIVA = (precioSinIVA) => {
-    const iva = 0.13; // Ejemplo: IVA del 13%
+    const iva = 0.13; 
     return (parseFloat(precioSinIVA) * (1 + iva)).toFixed(2);
   };
 
@@ -50,7 +50,6 @@ function RegistroPedidos() {
   const handlePrecioSinIVAChange = (e) => {
     const precio = e.target.value;
     setPrecioSinIVA(precio);
-    // Calcula y actualiza el precio con IVA
     if (precio) {
       setPrecioConIVA(calcularPrecioConIVA(precio));
     } else {
@@ -61,7 +60,7 @@ function RegistroPedidos() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setImagen(file.name); // Almacena solo el nombre del archivo
+      setImagen(file.name); 
     }
   };
 
@@ -111,7 +110,7 @@ function RegistroPedidos() {
               value={precioConIVA}
               placeholder="Precio calculado automáticamente"
               className="register-form__input"
-              disabled // Deshabilita el campo de texto
+              disabled 
               required
             />
           </div>

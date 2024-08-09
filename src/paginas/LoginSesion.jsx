@@ -1,55 +1,52 @@
 import React, { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { Card } from 'primereact/card';
 import '../css/SingUpForm.styles.css';
-import backgroundImage from '../img/image.png'; // Asegúrate de que la ruta sea correcta
+import backgroundImage from '../img/image.png'; 
 
-function SignUpForm() {
+function LoginForm() {
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted', { username, email, password });
+    console.log('Form submitted', { username, password });
   };
 
   return (
-    <div className="sign-up-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <div className="form-overlay">
-        <div className="form-card">
+    <div className="login-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
+      <div className="login-overlay">
+        <div className="login-card">
           <h2>Inicio de Sesión</h2>
           <form onSubmit={handleSubmit}>
-            <div className="p-field">
+            <div className="p-1">
               <span className="p-input-icon-left">
-               
                 <InputText
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Cédula"
+                  placeholder="Nombre de Usuario"
+                  className="login-input"
                 />
               </span>
             </div>
-         
-            <div className="p-field">
+            <div className="p-1">
               <span className="p-input-icon-left">
-              
                 <InputText
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Contraseña"
+                  className="login-input"
                 />
               </span>
             </div>
-            <Button type="submit" label="Iniciar Sesión" className="p-button-rounded" />
+            <Button type="submit" label="Iniciar Sesión" className="login-button" />
           </form>
-          <p className="mt-3">¿No tienes cuenta? Crea una</p>
+          <p className="login-footer">¿No tienes cuenta? Crea una cuenta</p>
         </div>
       </div>
     </div>
   );
 }
 
-export default SignUpForm;
+export default LoginForm;

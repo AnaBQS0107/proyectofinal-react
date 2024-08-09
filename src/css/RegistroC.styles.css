@@ -6,28 +6,28 @@
     margin: 10rem auto; 
     width: 100%; 
     max-width: 650px; 
-}
-
-.register-form__title {
+  }
+  
+  .register-form__title {
     color: #5b4539; 
     font-family: 'Playfair Display', serif;
     text-align: center;
     margin-bottom: 2.5rem;
-}
-
-.register-form .p-field {
+  }
+  
+  .register-form .p-field {
     margin-bottom: 2rem;
-}
-
-.register-form__label {
+  }
+  
+  .register-form__label {
     color: #5b4539; 
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     display: block;
     margin-bottom: 0.5rem;
-}
-
-.register-form__input {
+  }
+  
+  .register-form__input {
     background-color: #fff;
     border: 1px solid #dcd2c8;
     border-radius: 0.75rem;
@@ -36,14 +36,15 @@
     color: #5b4539; 
     font-family: 'Montserrat', sans-serif;
     transition: border-color 0.3s ease;
-}
-
-.register-form__input:focus {
+    width: 100%;
+  }
+  
+  .register-form__input:focus {
     border-color: #b27a48;
     outline: none;
-}
-
-.register-form__button {
+  }
+  
+  .register-form__button {
     background-color: #b27a48 !important;
     border: none !important;
     border-radius: 0.75rem !important;
@@ -54,8 +55,9 @@
     padding: 1rem 2rem !important;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.register-form__button:hover {
+  }
+  
+  .register-form__button:hover {
     background-color: #a16a3e !important; 
-}
+  }
+  
