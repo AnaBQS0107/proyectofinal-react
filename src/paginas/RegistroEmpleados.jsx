@@ -3,7 +3,7 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import { ingresarEmpleado } from '../api/empleados.api'; 
-import '../css/RegistroE.styles.css';
+import '../css/RegistroC.styles.css';
 
 function RegistroEmpleados() {
   const [cedula, setCedula] = useState('');
