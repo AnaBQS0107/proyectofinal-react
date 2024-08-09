@@ -1,76 +1,68 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import { Dropdown } from 'primereact/dropdown';
 import '../css/RegistroC.styles.css';
-import { insertarProducto } from '../api/producto.api'; // Importación de la función
+import { insertarProducto } from '../api/producto.api'; 
 
-function RegistroProducto() {
+function RegistroPedidos() {
   const [nombreProducto, setNombreProducto] = useState('');
   const [cantidadStock, setCantidadStock] = useState('');
   const [precioSinIVA, setPrecioSinIVA] = useState('');
   const [precioConIVA, setPrecioConIVA] = useState('');
   const [estante, setEstante] = useState('');
-  const [imagen, setImagen] = useState(null);
+  const [imagen, setImagen] = useState(''); // Almacena solo el nombre del archivo
   const toast = useRef(null);
 
   const estantes = [
-    { label: 'Estante 1', value: '1' },
-    { label: 'Estante 2', value: '2' },
-    { label: 'Estante 3', value: '3' }
+    { label: 'Estante 1', value: 'estante1' },
+    { label: 'Estante 2', value: 'estante2' },
+    { label: 'Estante 3', value: 'estante3' }
   ];
 
-  const calcularPrecioConIVA = (precio) => {
-    const IVA = 0.13; // Asumiendo que el IVA es del 13%
-    return precio * (1 + IVA);
+  // Función para calcular el precio con IVA
+  const calcularPrecioConIVA = (precioSinIVA) => {
+    const iva = 0.13; // Ejemplo: IVA del 13%
+    return (parseFloat(precioSinIVA) * (1 + iva)).toFixed(2);
   };
-
-  useEffect(() => {
-    const precioSinIVA_Numero = parseFloat(precioSinIVA);
-    if (!isNaN(precioSinIVA_Numero)) {
-      const precioConIVA_Numero = calcularPrecioConIVA(precioSinIVA_Numero);
-      setPrecioConIVA(precioConIVA_Numero.toFixed(2));
-    } else {
-      setPrecioConIVA('');
-    }
-  }, [precioSinIVA]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const precioSinIVA_Numero = parseFloat(precioSinIVA);
-    const cantidadStock_Numero = parseInt(cantidadStock);
-
-    if (isNaN(precioSinIVA_Numero)) {
-      toast.current.show({ severity: 'error', summary: 'Error', detail: 'El precio sin IVA no es válido', life: 3000 });
-      return;
-    }
-
-    if (isNaN(cantidadStock_Numero)) {
-      toast.current.show({ severity: 'error', summary: 'Error', detail: 'La cantidad en stock no es válida', life: 3000 });
-      return;
-    }
+    // Crear el objeto de datos del producto
+    const productoData = {
+      nombre: nombreProducto,
+      stock: cantidadStock,
+      precio: precioSinIVA,
+      precioIVA: precioConIVA,
+      catalogoEstantesId: estante,
+      imagen: imagen, // Envía solo el nombre del archivo
+    };
 
     try {
-      await insertarProducto({
-        nombre: nombreProducto,
-        cantidadStock: cantidadStock_Numero,
-        precioSinIVA: precioSinIVA_Numero,
-        precioConIVA: parseFloat(precioConIVA),
-        estante: estante,
-        imagen: imagen // Aquí deberías manejar la carga de la imagen según tu API
-      });
+      await insertarProducto(productoData);
       toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Producto registrado correctamente', life: 3000 });
     } catch (error) {
       toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo registrar el producto', life: 3000 });
     }
   };
 
+  const handlePrecioSinIVAChange = (e) => {
+    const precio = e.target.value;
+    setPrecioSinIVA(precio);
+    // Calcula y actualiza el precio con IVA
+    if (precio) {
+      setPrecioConIVA(calcularPrecioConIVA(precio));
+    } else {
+      setPrecioConIVA('');
+    }
+  };
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setImagen(URL.createObjectURL(file));
+      setImagen(file.name); // Almacena solo el nombre del archivo
     }
   };
 
@@ -107,7 +99,7 @@ function RegistroProducto() {
             <InputText
               id="precioSinIVA"
               value={precioSinIVA}
-              onChange={(e) => setPrecioSinIVA(e.target.value)}
+              onChange={handlePrecioSinIVAChange}
               placeholder="Ingrese el precio sin IVA"
               className="register-form__input"
               required
@@ -147,7 +139,7 @@ function RegistroProducto() {
             />
             {imagen && (
               <div className="register-form__image-preview">
-                <img src={imagen} alt="Vista previa" className="register-form__image" />
+                <p>Imagen seleccionada: {imagen}</p>
               </div>
             )}
           </div>
@@ -158,4 +150,4 @@ function RegistroProducto() {
   );
 }
 
-export default RegistroProducto;
+export default RegistroPedidos;
