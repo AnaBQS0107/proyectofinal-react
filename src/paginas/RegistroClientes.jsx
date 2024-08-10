@@ -47,7 +47,7 @@ function RegistroClientes() {
     <div className="register-form p-grid p-dir-col p-align-center">
       <Toast ref={toast} />
       <div className="p-col">
-        <h2 className="register-form__title">Registro de Clientes</h2>
+        <h2 className="register-form__title">Registrarse</h2>
         <form onSubmit={handleSubmit} className="p-fluid">
           <div className="p-field">
             <label htmlFor="cedula" className="register-form__label">Cédula</label>

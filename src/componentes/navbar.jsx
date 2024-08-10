@@ -49,7 +49,7 @@ function Navbar() {
                 style={{ width: '100%', marginTop: '10px' }}
               />
               <Button
-                label="Registro de Clientes"
+                label="Registrarse"
                 icon="pi pi-user-plus"
                 onClick={() => {
                   navigate('/RegistroC');
@@ -77,7 +77,7 @@ function Navbar() {
                     style={{ width: '100%', marginTop: '10px' }}
                   />
                   <Button
-                    label="Registro de Pedidos"
+                    label="Ingresar productos"
                     icon="pi pi-box"
                     onClick={() => {
                       navigate('/RegistroP');

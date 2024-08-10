@@ -45,7 +45,7 @@ function LoginForm() {
                 <InputText
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Nombre de Usuario"
+                  placeholder="Cédula de usuario"
                   className="login-input"
                 />
               </span>
