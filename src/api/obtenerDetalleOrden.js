@@ -1,15 +1,17 @@
 import axios from "axios";
 
-export const insertarProducto = async (ProductoNuevo) => {
+export const obtenerDetallesOrden = async (ordenId) => {
   try {
-    const response = await axios.post(
-      "http://localhost:3001/insertarProducto",
-      ProductoNuevo
+    const response = await axios.get(
+      `http://localhost:3001/detalleOrden/${ordenId}`
     );
     return response.data;
   } catch (error) {
     if (error.response) {
-      console.error("Error al insertar producto:", error.response.data.error);
+      console.error(
+        "Error al obtener detalles de la orden:",
+        error.response.data.error
+      );
       throw new Error(error.response.data.error);
     } else if (error.request) {
       console.error("No se recibió respuesta del servidor:", error.request);

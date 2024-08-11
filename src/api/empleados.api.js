@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const ingresarEmpleado = async (empleadoNuevo) =>
-    await axios.post('http://localhost:4000/insertarEmpleado', empleadoNuevo);
+  await axios.post("http://localhost:3001/insertarEmpleado", empleadoNuevo);
