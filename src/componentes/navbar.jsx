@@ -62,7 +62,18 @@ function Navbar() {
           ) : (
             <>
               {userRole === 'cliente' && (
-                null
+                          <>
+                          <Button
+                            label="Ordenes"
+                            icon="pi pi-list"
+                            onClick={() => {
+                              navigate('/ordenes');
+                              setVisible(false);
+                            }}
+                            className="p-button-text navbar-menu-item"
+                            style={{ width: '100%', marginTop: '10px' }}
+                          />
+                        </>
               )}
               {userRole === 'empleado' && (
                 <>
@@ -86,7 +97,9 @@ function Navbar() {
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
+                  
                 </>
+                
               )}
               <Button
                 label="Logout"

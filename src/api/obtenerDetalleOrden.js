@@ -3,7 +3,7 @@ import axios from "axios";
 export const obtenerDetallesOrden = async (ordenId) => {
   try {
     const response = await axios.get(
-      `http://localhost:3001/detalleOrden/${ordenId}`
+      `http://localhost:4000/detalleOrden/${ordenId}`
     );
     return response.data;
   } catch (error) {

@@ -3,7 +3,7 @@ import axios from "axios";
 export const insertarCliente = async (clienteNuevo) => {
   try {
     const response = await axios.post(
-      "http://localhost:3001/insertarCliente",
+      "http://localhost:4000/insertarCliente",
       clienteNuevo
     );
     return response.data;

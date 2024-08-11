@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const inicioSesion = async (username, password) => {
   try {
-    const response = await axios.post("http://localhost:3001/IniciarS", {
+    const response = await axios.post("http://localhost:4000/IniciarS", {
       idUsuario: username,
       contrasena: password,
     });

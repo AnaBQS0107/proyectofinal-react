@@ -28,13 +28,14 @@ function App() {
               {userRole === 'cliente' && (
                 <>
                   <Route path="/RegistroC" element={<RegistroClientes />} />
+                  <Route path="/ordenes" element={<Ordenes />} /> 
                 </>
               )}
               {userRole === 'empleado' && (
                 <>
                   <Route path="/RegistroE" element={<RegistroEmpleados />} />
                   <Route path="/RegistroP" element={<RegistroPedidos />} />
-                  <Route path="/ordenes" element={<Ordenes />} /> 
+                 
                 </>
               )}
             </>
