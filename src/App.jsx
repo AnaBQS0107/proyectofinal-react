@@ -5,8 +5,8 @@ import Inicio from './paginas/Inicio';
 import RegistroClientes from './paginas/RegistroClientes';
 import RegistroEmpleados from './paginas/RegistroEmpleados';
 import RegistroPedidos from './paginas/RegistroPedido';
+import MantenimientoC from './paginas/MantenimientoClientes'
 import LoginSesion from './paginas/LoginSesion';
-import Ordenes from './paginas/Ordenes';
 import Navbar from './componentes/navbar';
 
 function App() {
@@ -28,14 +28,13 @@ function App() {
               {userRole === 'cliente' && (
                 <>
                   <Route path="/RegistroC" element={<RegistroClientes />} />
-                  <Route path="/ordenes" element={<Ordenes />} /> 
                 </>
               )}
               {userRole === 'empleado' && (
                 <>
                   <Route path="/RegistroE" element={<RegistroEmpleados />} />
                   <Route path="/RegistroP" element={<RegistroPedidos />} />
-                 
+                  <Route path="/MantenimientoC" element={<MantenimientoC />} />
                 </>
               )}
             </>

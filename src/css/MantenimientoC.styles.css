@@ -1,0 +1,130 @@
+:root {
+    --secondary-color: #2ecc70c2;
+    --danger-color: #e74c3c;
+}
+
+.p-button.p-button-success {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.p-button.p-button-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.users-list {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.users-list h1 {
+    text-align: center;
+    color: #333;
+}
+
+.add-user-btn {
+    margin-bottom: 20px;
+}
+
+.p-datatable {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 100%;
+    overflow-x: auto; 
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+    text-align: center;
+    padding: 1rem;
+    color: #000;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+    background-color: #ffffff;
+}
+
+.p-datatable .p-datatable-tbody > tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.p-button {
+    margin-right: 5px;
+}
+
+.p-dialog .p-dialog-content {
+    padding: 2rem;
+}
+
+.p-field {
+    margin-bottom: 1rem;
+}
+
+.p-field label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.p-inputtext, .p-password {
+    width: 100%;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons .p-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-buttons .p-button .p-button-icon {
+    margin-right: 5px;
+}
+
+
+@media (max-width: 768px) {
+    .users-list {
+        padding: 10px;
+    }
+
+    .p-datatable .p-datatable-thead > tr > th,
+    .p-datatable .p-datatable-tbody > tr > td {
+        font-size: 0.9rem; 
+    }
+
+    .p-dialog .p-dialog-content {
+        padding: 1rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .p-datatable .p-datatable-thead > tr > th,
+    .p-datatable .p-datatable-tbody > tr > td {
+        font-size: 0.8rem; 
+    }
+
+    .p-field label {
+        font-size: 0.9rem; 
+    }
+
+    .p-inputtext, .p-password {
+        font-size: 0.9rem; 
+    }
+}

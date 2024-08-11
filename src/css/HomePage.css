@@ -18,7 +18,7 @@ body {
 }
 
 .p-menubar .p-menuitem-link:hover {
-  color: #c68c53;
+  color: #d69b67;
 }
 
 .hero {
@@ -46,8 +46,8 @@ body {
 }
 
 .p-button-danger {
-  background-color: #c68c53;
-  border-color: #c68c53;
+  background-color: #d69b67;
+  border-color: #d69b67;
   color: #f4f4f4;
   font-size: 1.1rem;
   padding: 1rem 2rem;
@@ -55,8 +55,8 @@ body {
 }
 
 .p-button-danger:hover {
-  background-color: #b27a48;
-  border-color: #b27a48;
+  background-color: #d69b67;
+  border-color: #d69b67;
 }
 
 .mission-vision, .info-section {
@@ -81,7 +81,7 @@ body {
 
 .mission i, .vision i, .info-item i {
   font-size: 3rem;
-  color: #c68c53;
+  color: #d69b67;
   margin-bottom: 1rem;
 }
 
@@ -96,7 +96,7 @@ body {
   line-height: 1.6;
 }
 
-/* Ajustes para pantallas móviles */
+
 @media (max-width: 768px) {
   .mission-vision, .info-section {
     flex-direction: column;

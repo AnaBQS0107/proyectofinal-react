@@ -12,7 +12,7 @@ function RegistroPedidos() {
   const [precioSinIVA, setPrecioSinIVA] = useState('');
   const [precioConIVA, setPrecioConIVA] = useState('');
   const [estante, setEstante] = useState('');
-  const [imagen, setImagen] = useState('');
+  const [imagen, setImagen] = useState(null); // Cambiar a null para manejar archivos
   const toast = useRef(null);
 
   const estantes = [
@@ -20,7 +20,6 @@ function RegistroPedidos() {
     { label: 'Estante 2', value: '2' },
     { label: 'Estante 3', value: '3' }
   ];
-
 
   const calcularPrecioConIVA = (precioSinIVA) => {
     const iva = 0.13; 
@@ -30,17 +29,18 @@ function RegistroPedidos() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const productoData = {
-      nombre: nombreProducto,
-      stock: cantidadStock,
-      precio: precioSinIVA,
-      precioIVA: precioConIVA,
-      catalogoEstantesId: estante,
-      imagen: imagen,
-    };
+    const formData = new FormData();
+    formData.append('nombre', nombreProducto);
+    formData.append('stock', cantidadStock);
+    formData.append('precio', precioSinIVA);
+    formData.append('precioIVA', precioConIVA);
+    formData.append('catalogoEstantesId', estante);
+    if (imagen) {
+      formData.append('imagen', imagen);
+    }
 
     try {
-      await insertarProducto(productoData);
+      await insertarProducto(formData); // Asegúrate de que insertarProducto maneje FormData
       toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Producto registrado correctamente', life: 3000 });
     } catch (error) {
       toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo registrar el producto', life: 3000 });
@@ -60,7 +60,7 @@ function RegistroPedidos() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setImagen(file.name); 
+      setImagen(file); // Guarda el archivo en el estado
     }
   };
 
@@ -137,7 +137,7 @@ function RegistroPedidos() {
             />
             {imagen && (
               <div className="register-form__image-preview">
-                <p>Imagen seleccionada: {imagen}</p>
+                <p>Imagen seleccionada: {imagen.name}</p>
               </div>
             )}
           </div>
