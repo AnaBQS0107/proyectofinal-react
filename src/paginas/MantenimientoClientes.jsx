@@ -46,16 +46,17 @@ const UsersList = () => {
             console.error('Error al agregar usuario:', error);
         }
     };
-
     const handleEditUser = async () => {
         try {
-            await axios.put('http://localhost:4000/actualizarCliente', newUser);
+            const response = await axios.put('http://localhost:4000/actualizarCliente', newUser);
+            console.log('Respuesta de actualización:', response.data);
             setUsers(users.map(user => (user.Persona_idCedula === newUser.idCedula ? newUser : user)));
             resetDialog();
         } catch (error) {
             console.error('Error al actualizar usuario:', error);
         }
     };
+    
 
     const handleDeleteUser = async (idCedula) => {
         try {

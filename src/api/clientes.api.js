@@ -16,38 +16,26 @@ export const insertarCliente = async (clienteNuevo) => {
   }
 };
 
-export const eliminarCliente = async (idCedula) => {
+export const fetchUsers = async () => {
   try {
-      const response = await axios.delete(`http://localhost:4000/eliminarCliente/${idCedula}`);
+      const response = await axios.get(`http://localhost:4000/insertarCliente`);
       return response.data;
   } catch (error) {
+      console.error('Error al cargar usuarios:', error);
       if (error.response) {
-          console.error('Error al eliminar cliente:', error.response.data);
+          // La solicitud se hizo y el servidor respondió con un estado diferente a 2xx
+          console.error('Datos de error del servidor:', error.response.data);
+          console.error('Estado de error:', error.response.status);
+          console.error('Encabezados de error:', error.response.headers);
       } else if (error.request) {
+          // La solicitud se hizo pero no se recibió respuesta
           console.error('No se recibió respuesta del servidor:', error.request);
       } else {
+          // Algo ocurrió al configurar la solicitud
           console.error('Error al configurar la solicitud:', error.message);
       }
       throw error;
   }
 };
 
-export const actualizarCliente = async (clienteActualizado) => {
-  try {
-      const response = await axios.put('http://localhost:4000/actualizarCliente', clienteActualizado, {
-          headers: {
-              'Content-Type': 'application/json'
-          }
-      });
-      return response.data;
-  } catch (error) {
-      if (error.response) {
-          console.error('Error al actualizar cliente:', error.response.data);
-      } else if (error.request) {
-          console.error('No se recibió respuesta del servidor:', error.request);
-      } else {
-          console.error('Error al configurar la solicitud:', error.message);
-      }
-      throw error; // Re-lanza el error para que pueda ser manejado por el llamador
-  }
-};
+
