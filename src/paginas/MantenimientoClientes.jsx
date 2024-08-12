@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';  // Asegúrate de importar useRef aquí
 import axios from 'axios';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -6,8 +6,8 @@ import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
+import { Toast } from 'primereact/toast';  // Asegúrate de importar Toast aquí
 import '../css/MantenimientoC.styles.css';
-
 const UsersList = () => {
     const [users, setUsers] = useState([]);
     const [displayDialog, setDisplayDialog] = useState(false);
@@ -23,6 +23,7 @@ const UsersList = () => {
         CorreoElectronico: "",
         Contraseña: ""
     });
+    const toast = useRef(null); 
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -32,6 +33,7 @@ const UsersList = () => {
                 setUsers(response.data);
             } catch (error) {
                 console.error('Error al cargar usuarios:', error);
+                toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudieron cargar los usuarios', life: 3000 });
             }
         };
         fetchUsers();
@@ -42,28 +44,33 @@ const UsersList = () => {
             await axios.post('http://localhost:4000/insertarCliente', newUser);
             setUsers([...users, newUser]);
             resetDialog();
+            toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Usuario agregado correctamente', life: 3000 });
         } catch (error) {
-            console.error('Error al agregar usuario:', error);
+            console.error('Error al agregar usuario:', error.response ? error.response.data : error.message);
+            toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo agregar el usuario', life: 3000 });
         }
     };
+
     const handleEditUser = async () => {
         try {
-            const response = await axios.put('http://localhost:4000/actualizarCliente', newUser);
-            console.log('Respuesta de actualización:', response.data);
-            setUsers(users.map(user => (user.Persona_idCedula === newUser.idCedula ? newUser : user)));
+            await axios.put('http://localhost:4000/actualizarCliente', newUser);
+            setUsers(users.map(user => (user.idCedula === newUser.idCedula ? newUser : user)));
             resetDialog();
+            toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Usuario actualizado correctamente', life: 3000 });
         } catch (error) {
             console.error('Error al actualizar usuario:', error);
+            toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo actualizar el usuario', life: 3000 });
         }
     };
-    
 
     const handleDeleteUser = async (idCedula) => {
         try {
             await axios.delete(`http://localhost:4000/eliminarCliente/${idCedula}`);
-            setUsers(users.filter(user => user.Persona_idCedula !== idCedula));
+            setUsers(users.filter(user => user.idCedula !== idCedula));
+            toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Usuario eliminado correctamente', life: 3000 });
         } catch (error) {
             console.error('Error al eliminar usuario:', error);
+            toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo eliminar el usuario', life: 3000 });
         }
     };
 
@@ -101,7 +108,7 @@ const UsersList = () => {
                     icon="pi pi-trash"
                     label="Eliminar"
                     className="p-button-rounded p-button-danger"
-                    onClick={() => handleDeleteUser(rowData.Persona_idCedula)}
+                    onClick={() => handleDeleteUser(rowData.idCedula)}
                 />
             </div>
         );
@@ -109,6 +116,7 @@ const UsersList = () => {
 
     return (
         <div className="users-list">
+            <Toast ref={toast} />
             <h1>Lista de Usuarios</h1>
             <Button
                 label="Agregar Usuario"

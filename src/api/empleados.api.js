@@ -1,6 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const ingresarEmpleado = async (empleadoNuevo) =>
+
     await axios.post('http://localhost:4000/insertarEmpleado', empleadoNuevo);
 
 export const actualizarEmpleado = async (idCedula, empleadoActualizado) => {
@@ -37,3 +38,6 @@ export const EliminarEmpleado = async (cedula) => {
         throw error; 
     }
 };
+
+  await axios.post("http://localhost:4000/insertarEmpleado", empleadoNuevo);
+
