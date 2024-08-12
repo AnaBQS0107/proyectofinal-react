@@ -3,31 +3,83 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #f4f4f4; /* Fondo claro que complementa los colores generales */
 }
 
 .productos-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    width: 100%;
+    max-width: 1200px; /* Mantiene los productos alineados */
 }
 
 .producto-item {
-    border: 1px solid #ccc;
+    background-color: #1c1c1c; /* Fondo oscuro similar a la sección de mission-vision */
+    border: 1px solid #d69b67; /* Borde en tono dorado */
     border-radius: 5px;
     padding: 1rem;
     margin: 1rem;
     text-align: center;
-    width: 200px;
+    width: 250px; /* Mantiene el tamaño uniforme de la tarjeta */
+    color: #f4f4f4; /* Texto claro */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Añade animación al hover */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegura que los elementos estén espaciados uniformemente */
+}
+
+.producto-item:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño al hacer hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra al hacer hover */
+}
+
+.producto-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    width: 100%; /* Ajusta el ancho de la imagen */
+    height: 150px; /* Fija la altura de la imagen */
 }
 
 .producto-item h3 {
     margin-bottom: 0.5rem;
+    font-size: 1.5rem; /* Aumenta un poco el tamaño de la fuente */
+    color: #d69b67; /* Título en dorado */
 }
 
 .producto-item p {
     margin-bottom: 1rem;
+    font-size: 1.2rem; /* Tamaño del precio */
 }
 
 .p-button-success {
     width: 100%;
+    background-color: #d69b67; /* Botón en dorado */
+    border-color: #d69b67;
+    color: #1c1c1c; /* Texto oscuro para contraste */
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.p-button-success:hover {
+    background-color: #b37b4d; /* Tono más oscuro al hacer hover */
+    border-color: #b37b4d;
+}
+
+@media (max-width: 768px) {
+    .productos-list {
+        justify-content: center; /* Centra los productos en pantallas más pequeñas */
+    }
+
+    .producto-item {
+        width: 100%; /* Hace que los productos ocupen todo el ancho disponible */
+        max-width: 400px; /* Ancho máximo para productos en pantallas pequeñas */
+    }
+
+    .producto-item img {
+        height: 200px; /* Aumenta la altura de la imagen para pantallas pequeñas */
+    }
 }
