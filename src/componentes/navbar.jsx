@@ -36,6 +36,16 @@ function Navbar() {
             className="p-button-text navbar-menu-item"
             style={{ width: '100%' }}
           />
+        <Button
+            label="Productos"
+            icon="pi pi-box"
+            onClick={() => {
+              navigate('/productos');
+              setVisible(false);
+            }}
+            className="p-button-text navbar-menu-item"
+            style={{ width: '100%', marginTop: '10px' }}
+          />
           {!isAuthenticated ? (
             <>
               <Button

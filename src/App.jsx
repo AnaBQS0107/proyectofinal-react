@@ -8,6 +8,8 @@ import RegistroPedidos from './paginas/RegistroPedido';
 import MantenimientoC from './paginas/MantenimientoClientes'
 import LoginSesion from './paginas/LoginSesion';
 import Navbar from './componentes/navbar';
+import ObtenerProductos from './paginas/ObtenerProductos';
+
 
 function App() {
   const { userRole, isAuthenticated } = useAuth();
@@ -18,6 +20,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Inicio />} />
+          <Route path="/productos" element={<ObtenerProductos />} />  
           {!isAuthenticated ? (
             <>
               <Route path="/login" element={<LoginSesion />} />
