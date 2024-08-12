@@ -3,14 +3,14 @@ import { Button } from 'primereact/button';
 import '../css/ObtenerProductos.css';
 import { obtenerProductos as fetchProductosFromAPI } from '../api/obtenerProductos.api';
 
-function MostrarProductos() {  // Cambié el nombre de la función a MostrarProductos
+function MostrarProductos() {  
     const [productos, setProductos] = useState([]);
     const [carrito, setCarrito] = useState([]);
 
     useEffect(() => {
         const fetchProductos = async () => {
             try {
-                const productosData = await fetchProductosFromAPI();  // Llamo a la función importada
+                const productosData = await fetchProductosFromAPI();  
                 setProductos(productosData);
             } catch (error) {
                 console.error('Error al cargar productos:', error);
@@ -19,22 +19,18 @@ function MostrarProductos() {  // Cambié el nombre de la función a MostrarProd
 
         fetchProductos();
     }, []);
-    useEffect(() => {
-        const fetchProductos = async () => {
-            try {
-                const productosData = await fetchProductosFromAPI();  // Llamo a la función importada
-                console.log(productosData);  // Agrega esto para ver los datos en consola
-                setProductos(productosData);
-            } catch (error) {
-                console.error('Error al cargar productos:', error);
-            }
-        };
-    
-        fetchProductos();
-    }, []);
+
     const agregarAlCarrito = (producto) => {
         setCarrito([...carrito, producto]);
         alert(`${producto.Nombre} se agregó al carrito`);
+    };
+
+    // Definición de la función para formatear el precio
+    const formatCurrency = (value) => {
+        return new Intl.NumberFormat('es-CR', {
+            style: 'currency',
+            currency: 'CRC'
+        }).format(value);
     };
 
     return (
@@ -44,7 +40,7 @@ function MostrarProductos() {  // Cambié el nombre de la función a MostrarProd
                 {productos.map((producto) => (
                     <div key={producto.idProducto} className="producto-item">
                         <h3>{producto.Nombre}</h3>
-                        <p>Precio: {producto.Precio} colones</p>
+                        <p>Precio: {formatCurrency(producto.Precio)}</p>
                         <Button label="Agregar al Carrito" onClick={() => agregarAlCarrito(producto)} className="p-button-success" />
                     </div>
                 ))}
