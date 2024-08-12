@@ -9,7 +9,12 @@ import MantenimientoC from './paginas/MantenimientoClientes'
 import LoginSesion from './paginas/LoginSesion';
 import Navbar from './componentes/navbar';
 import MostrarProductos from './paginas/ObtenerProductos';
+<<<<<<< HEAD
 import ControlI from './paginas/ControlInventario';
+=======
+import MantenimientoE from './paginas/MantenimientoEmpleados';
+
+>>>>>>> 68896562b6d1fb478d09eebf24854e13bdf9bd38
 
 
 function App() {
@@ -39,7 +44,11 @@ function App() {
                   <Route path="/RegistroE" element={<RegistroEmpleados />} />
                   <Route path="/RegistroP" element={<RegistroPedidos />} />
                   <Route path="/MantenimientoC" element={<MantenimientoC />} />
+<<<<<<< HEAD
                   <Route path="/ControlI" element={<ControlI />} />
+=======
+                  <Route path="/MantenimientoE" element={<MantenimientoE />} />
+>>>>>>> 68896562b6d1fb478d09eebf24854e13bdf9bd38
                 </>
               )}
             </>
