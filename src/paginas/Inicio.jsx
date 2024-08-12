@@ -12,28 +12,28 @@ const ExklusivPage = () => {
         <div className="mission">
           <i className="pi pi-fw pi-eye"></i>
           <h2>Misión</h2>
-          <p>
+          <p-info>
             Ser un proveedor de confianza para los clientes, brindando productos de calidad.
-          </p>
+          </p-info>
         </div>
         <div className="vision">
           <i className="pi pi-fw pi-chart-line"></i>
           <h2>Visión</h2>
-          <p>
+          <p-info>
             Ser la empresa distribuidora de productos N°1 en el territorio costarricense.
-          </p>
+          </p-info>
         </div>
       </div>
       <div className="info-section">
         <div className="info-item">
           <i className="pi pi-fw pi-shopping-bag"></i> 
           <h3>Tienda Principal</h3>
-          <p>Ubicada en Calle Principal, San José, Costa Rica</p>
+          <p-info>Ubicada en Calle Principal, San José, Costa Rica</p-info>
         </div>
         <div className="info-item">
           <i className="pi pi-fw pi-phone"></i> 
           <h3>Contacto</h3>
-          <p>Número telefonico: +506 1234 5678</p>
+          <p-info>Número telefonico: +506 1234 5678</p-info>
 
         </div>
       </div>

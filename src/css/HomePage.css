@@ -6,11 +6,17 @@ body {
   padding: 0;
 }
 
+.p-info{
+  color: #fff;
+}
 .p-menubar {
   background-color: #2d2d2d;
   border: none;
 }
 
+h3{
+  color: #fff !important;
+}
 .p-menubar .p-menuitem-link {
   color: #f4f4f4;
   font-size: 1.1rem;
