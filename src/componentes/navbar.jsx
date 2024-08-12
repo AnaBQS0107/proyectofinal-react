@@ -72,18 +72,18 @@ function Navbar() {
           ) : (
             <>
               {userRole === 'cliente' && (
-                          <>
-                          <Button
-                            label="Ordenes"
-                            icon="pi pi-list"
-                            onClick={() => {
-                              navigate('/ordenes');
-                              setVisible(false);
-                            }}
-                            className="p-button-text navbar-menu-item"
-                            style={{ width: '100%', marginTop: '10px' }}
-                          />
-                        </>
+                <>
+                  <Button
+                    label="Ordenes"
+                    icon="pi pi-list"
+                    onClick={() => {
+                      navigate('/ordenes');
+                      setVisible(false);
+                    }}
+                    className="p-button-text navbar-menu-item"
+                    style={{ width: '100%', marginTop: '10px' }}
+                  />
+                </>
               )}
               {userRole === 'empleado' && (
                 <>
@@ -97,7 +97,7 @@ function Navbar() {
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
-                   <Button
+                  <Button
                     label="Mantenimiento Clientes"
                     icon="pi pi-pencil"
                     onClick={() => {
@@ -107,19 +107,21 @@ function Navbar() {
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
-<<<<<<< HEAD
-                            <Button
+                  <Button
                     label="Control de Inventario"
                     icon="pi pi-users"
                     onClick={() => {
                       navigate('/ControlI');
-=======
-                      <Button
+                      setVisible(false);
+                    }}
+                    className="p-button-text navbar-menu-item"
+                    style={{ width: '100%', marginTop: '10px' }}
+                  />
+                  <Button
                     label="Mantenimiento Empleados"
                     icon="pi pi-pencil"
                     onClick={() => {
                       navigate('/MantenimientoE');
->>>>>>> 68896562b6d1fb478d09eebf24854e13bdf9bd38
                       setVisible(false);
                     }}
                     className="p-button-text navbar-menu-item"
@@ -135,9 +137,7 @@ function Navbar() {
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
-                  
                 </>
-                
               )}
               <Button
                 label="Logout"

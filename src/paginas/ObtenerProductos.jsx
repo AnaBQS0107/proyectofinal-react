@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
+import { useNavigate } from 'react-router-dom';
 import '../css/ObtenerProductos.css';
-import { obtenerProductos as fetchProductosFromAPI } from '../api/obtenerProductos.api';
+import { obtenerProductos as fetchProductosFromAPI } from '../api/producto.api'; // Asegúrate de que la ruta y nombre del archivo sea correcta
 
 function MostrarProductos() {
     const [productos, setProductos] = useState([]);
     const [carrito, setCarrito] = useState([]);
+    const navigate = useNavigate(); // Inicializa useNavigate
 
     useEffect(() => {
         const fetchProductos = async () => {
@@ -19,6 +21,10 @@ function MostrarProductos() {
 
         fetchProductos();
     }, []);
+
+    const verDetallesProducto = (idProducto) => {
+        navigate(`/productos/${idProducto}`);
+    };
 
     const agregarAlCarrito = (producto) => {
         setCarrito([...carrito, producto]);
@@ -52,7 +58,7 @@ function MostrarProductos() {
                 <h2>Productos Disponibles</h2>
                 <div className="productos-list">
                     {productos.map((producto) => (
-                        <div key={producto.idProducto} className="producto-item">
+                        <div key={producto.idProducto} className="producto-item" onClick={() => verDetallesProducto(producto.idProducto)}>
                             <img src={obtenerRutaImagen(producto.Imagen)} alt={producto.Nombre} className="producto-imagen" />
                             <h3-nombre>{producto.Nombre}</h3-nombre>
                             <p>Precio: {formatCurrency(producto.Precio)}</p>

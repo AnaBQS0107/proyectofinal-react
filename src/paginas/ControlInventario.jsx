@@ -6,7 +6,8 @@ import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import '../css/ControlInventario.css';
 
-import { obtenerProductos as fetchProductosFromAPI } from '../api/obtenerProductos.api';
+import { obtenerProductos as fetchProductosFromAPI } from '../api/producto.api';
+
 
 function ControlInventarios() {
     const [inventario, setInventario] = useState([]);
