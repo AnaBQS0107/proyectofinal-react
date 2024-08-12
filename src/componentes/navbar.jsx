@@ -107,6 +107,16 @@ function Navbar() {
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
+                            <Button
+                    label="Control de Inventario"
+                    icon="pi pi-users"
+                    onClick={() => {
+                      navigate('/ControlI');
+                      setVisible(false);
+                    }}
+                    className="p-button-text navbar-menu-item"
+                    style={{ width: '100%', marginTop: '10px' }}
+                  />
                   <Button
                     label="Ingresar productos"
                     icon="pi pi-box"

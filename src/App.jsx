@@ -9,7 +9,7 @@ import MantenimientoC from './paginas/MantenimientoClientes'
 import LoginSesion from './paginas/LoginSesion';
 import Navbar from './componentes/navbar';
 import MostrarProductos from './paginas/ObtenerProductos';
-
+import ControlI from './paginas/ControlInventario';
 
 
 function App() {
@@ -39,6 +39,7 @@ function App() {
                   <Route path="/RegistroE" element={<RegistroEmpleados />} />
                   <Route path="/RegistroP" element={<RegistroPedidos />} />
                   <Route path="/MantenimientoC" element={<MantenimientoC />} />
+                  <Route path="/ControlI" element={<ControlI />} />
                 </>
               )}
             </>
