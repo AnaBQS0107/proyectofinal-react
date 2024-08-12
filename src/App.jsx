@@ -12,6 +12,7 @@ import MostrarProductos from './paginas/ObtenerProductos';
 import ControlI from './paginas/ControlInventario';
 import MantenimientoE from './paginas/MantenimientoEmpleados';
 import DetalleProducto from './paginas/DetalleProducto';
+import Carrito from './paginas/Carrito';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<Inicio />} />
           <Route path="/productos" element={<MostrarProductos />} />
           <Route path="/productos/:idProducto" element={<DetalleProducto />} />
+          <Route path="/carrito" element={<Carrito />} />
           {!isAuthenticated ? (
             <>
               <Route path="/login" element={<LoginSesion />} />

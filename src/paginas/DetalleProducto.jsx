@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Button } from 'primereact/button';
-import { obtenerProductoPorId } from '../api/producto.api'; // Asegúrate de que el nombre del archivo y la ruta coincidan
+import { obtenerProductoPorId } from '../api/producto.api';
 import '../css/DetalleProducto.css';
 import { crearOrden, agregarProductoACarrito } from '../api/ordenes.api';
 
 function DetalleProducto() {
-    const { idProducto } = useParams();  // Obtén el ID del producto desde la URL
+    const { idProducto } = useParams();
     const [producto, setProducto] = useState(null);
     const [cantidad, setCantidad] = useState(1);
+    const navigate = useNavigate(); // Initialize useNavigate
 
     useEffect(() => {
         const fetchProducto = async () => {
             try {
-                const productoData = await obtenerProductoPorId(idProducto);  // Llama a la API para obtener el producto por ID
-                console.log("Datos del producto:", productoData); // Para depuración
+                const productoData = await obtenerProductoPorId(idProducto);
                 if (productoData) {
                     setProducto(productoData);
                 } else {
@@ -29,7 +29,7 @@ function DetalleProducto() {
     }, [idProducto]);
 
     const obtenerClienteId = () => {
-        return localStorage.getItem('clienteId') || null;  // Reemplaza esto según tu lógica de autenticación
+        return localStorage.getItem('clienteId') || null;
     };
 
     const aumentarCantidad = () => {
@@ -46,7 +46,7 @@ function DetalleProducto() {
 
     const manejarAgregarAlCarrito = async () => {
         try {
-            const clienteId = obtenerClienteId(); // Obtén el ID del cliente
+            const clienteId = obtenerClienteId();
             let idOrdenCliente = localStorage.getItem('idOrdenCliente');
 
             if (!idOrdenCliente) {
@@ -56,6 +56,9 @@ function DetalleProducto() {
 
             await agregarProductoACarrito(idOrdenCliente, producto.idProducto, cantidad);
             alert(`${producto.Nombre} se agregó al carrito con una cantidad de ${cantidad}`);
+            
+            // Redirect to cart page
+            navigate('/carrito');
         } catch (error) {
             console.error('Error al agregar producto al carrito:', error);
         }
@@ -66,7 +69,6 @@ function DetalleProducto() {
     }
 
     const obtenerRutaImagen = (imagen) => {
-        // Asegúrate de que la ruta de la imagen sea la correcta
         return `http://localhost:4001/uploads/${imagen}`;
     };
 

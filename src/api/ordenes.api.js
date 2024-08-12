@@ -18,3 +18,10 @@ export const agregarProductoACarrito = async (
     cantidad,
   });
 };
+
+export const obtenerCarrito = async (idOrdenCliente) => {
+  const response = await axios.get(
+    `http://localhost:4000/carrito/${idOrdenCliente}`
+  );
+  return response.data;
+};
