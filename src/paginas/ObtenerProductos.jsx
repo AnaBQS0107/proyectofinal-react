@@ -38,8 +38,7 @@ function MostrarProductos() {
 
     return (
         <>
-         
-            <br /><br /><br /> <br /> <br /> {/* Añadido espacio usando <br> */}
+            <br /><br /><br /> <br /> <br />
             <div className="productos-container">
                 <div className="header-section">
                     <div className="header-content">
@@ -47,7 +46,6 @@ function MostrarProductos() {
                         <input type="text" placeholder="Buscador" className="search-bar" />
                     </div>
                     <div className="header-image">
-                        {/* Aquí puedes añadir una imagen si es necesario */}
                     </div>
                 </div>
 
@@ -57,7 +55,9 @@ function MostrarProductos() {
                         <div key={producto.idProducto} className="producto-item">
                             <img src={obtenerRutaImagen(producto.Imagen)} alt={producto.Nombre} className="producto-imagen" />
                             <h3-nombre>{producto.Nombre}</h3-nombre>
-                            <p>{formatCurrency(producto.Precio)}</p>
+                            <p>Precio: {formatCurrency(producto.Precio)}</p>
+                            <p>Precio con IVA: {formatCurrency(producto.PrecioIVA)}</p>
+                            <p>Cantidad disponible: {(producto.Stock)}</p>
                             <Button label="Agregar al Carrito" onClick={() => agregarAlCarrito(producto)} className="p-button-carrito" />
                         </div>
                     ))}
