@@ -33,12 +33,19 @@ function MostrarProductos() {
         }).format(value);
     };
 
+    // Asumiendo que las imágenes están en la carpeta "uploads"
+    const obtenerRutaImagen = (imagen) => {
+        return `http://localhost:4001/uploads/${imagen}`;
+    };
+    
+
     return (
         <div className="productos-container">
             <h2>Productos Disponibles</h2>
             <div className="productos-list">
                 {productos.map((producto) => (
                     <div key={producto.idProducto} className="producto-item">
+                        <img src={obtenerRutaImagen(producto.Imagen)} alt={producto.Nombre} className="producto-imagen" />
                         <h3>{producto.Nombre}</h3>
                         <p>Precio: {formatCurrency(producto.Precio)}</p>
                         <Button label="Agregar al Carrito" onClick={() => agregarAlCarrito(producto)} className="p-button-success" />
@@ -50,5 +57,3 @@ function MostrarProductos() {
 }
 
 export default MostrarProductos;
-
-
