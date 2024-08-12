@@ -8,6 +8,7 @@ import RegistroPedidos from './paginas/RegistroPedido';
 import MantenimientoC from './paginas/MantenimientoClientes'
 import LoginSesion from './paginas/LoginSesion';
 import Navbar from './componentes/navbar';
+import MantenimientoE from './paginas/MantenimientoEmpleados';
 
 function App() {
   const { userRole, isAuthenticated } = useAuth();
@@ -35,6 +36,7 @@ function App() {
                   <Route path="/RegistroE" element={<RegistroEmpleados />} />
                   <Route path="/RegistroP" element={<RegistroPedidos />} />
                   <Route path="/MantenimientoC" element={<MantenimientoC />} />
+                  <Route path="/MantenimientoE" element={<MantenimientoE />} />
                 </>
               )}
             </>

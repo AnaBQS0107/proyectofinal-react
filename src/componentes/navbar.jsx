@@ -86,6 +86,16 @@ function Navbar() {
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
+                      <Button
+                    label="Mantenimiento Empleados"
+                    icon="pi pi-pencil"
+                    onClick={() => {
+                      navigate('/MantenimientoE');
+                      setVisible(false);
+                    }}
+                    className="p-button-text navbar-menu-item"
+                    style={{ width: '100%', marginTop: '10px' }}
+                  />
                   <Button
                     label="Ingresar productos"
                     icon="pi pi-box"
