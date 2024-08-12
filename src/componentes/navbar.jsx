@@ -46,16 +46,7 @@ function Navbar() {
             className="p-button-text navbar-menu-item"
             style={{ width: '100%', marginTop: '10px' }}
           />
-               <Button
-            label="Carrito"
-            icon="pi pi-shopping-cart"
-            onClick={() => {
-              navigate('/carrito');
-              setVisible(false);
-            }}
-            className="p-button-text navbar-menu-item"
-            style={{ width: '100%', marginTop: '10px' }}
-          />
+
           {!isAuthenticated ? (
             <>
               <Button
@@ -88,6 +79,16 @@ function Navbar() {
                     icon="pi pi-list"
                     onClick={() => {
                       navigate('/ordenes');
+                      setVisible(false);
+                    }}
+                    className="p-button-text navbar-menu-item"
+                    style={{ width: '100%', marginTop: '10px' }}
+                  />
+                 <Button
+                    label="Carrito"
+                    icon="pi pi-shopping-cart"
+                    onClick={() => {
+                      navigate('/carrito');
                       setVisible(false);
                     }}
                     className="p-button-text navbar-menu-item"

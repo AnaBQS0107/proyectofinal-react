@@ -26,7 +26,7 @@ function App() {
           <Route path="/" element={<Inicio />} />
           <Route path="/productos" element={<MostrarProductos />} />
           <Route path="/productos/:idProducto" element={<DetalleProducto />} />
-          <Route path="/carrito" element={<Carrito />} />
+         
           {!isAuthenticated ? (
             <>
               <Route path="/login" element={<LoginSesion />} />
@@ -37,6 +37,7 @@ function App() {
               {userRole === 'cliente' && (
                 <>
                   <Route path="/RegistroC" element={<RegistroClientes />} />
+                  <Route path="/carrito" element={<Carrito />} />
                 </>
               )}
               {userRole === 'empleado' && (
