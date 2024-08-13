@@ -1,0 +1,66 @@
+.login-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.login-overlay {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(63, 63, 63, 0.8); 
+}
+
+.login-card {
+    width: 400px;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.login-card h2 {
+    color: #b27a48; 
+    margin-bottom: 2rem;
+}
+
+.p-1 {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center; 
+}
+
+.login-input {
+    width: 100%;
+}
+
+.login-button {
+    background-color: #b27a48;
+    border-color: #b27a48; 
+    width: 100%;
+}
+
+.login-footer {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 768px) {
+    .login-overlay {
+        width: 100%;
+    }
+
+    .login-card {
+        width: 90%;
+    }
+}
