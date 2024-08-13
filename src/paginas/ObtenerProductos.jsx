@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
-import { useNavigate } from 'react-router-dom';
 import '../css/ObtenerProductos.css';
-import { obtenerProductos as fetchProductosFromAPI } from '../api/producto.api'; // Asegúrate de que la ruta y nombre del archivo sea correcta
+import { obtenerProductos as fetchProductosFromAPI } from '../api/obtenerProductos.api';
 
 function MostrarProductos() {
     const [productos, setProductos] = useState([]);
     const [carrito, setCarrito] = useState([]);
-    const navigate = useNavigate(); // Inicializa useNavigate
+    const [searchTerm, setSearchTerm] = useState(''); 
 
     useEffect(() => {
         const fetchProductos = async () => {
@@ -21,10 +20,6 @@ function MostrarProductos() {
 
         fetchProductos();
     }, []);
-
-    const verDetallesProducto = (idProducto) => {
-        navigate(`/productos/${idProducto}`);
-    };
 
     const agregarAlCarrito = (producto) => {
         setCarrito([...carrito, producto]);
@@ -42,6 +37,11 @@ function MostrarProductos() {
         return `http://localhost:4001/uploads/${imagen}`;
     };
 
+ 
+    const productosFiltrados = productos.filter(producto =>
+        producto.Nombre.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <>
             <br /><br /><br /> <br /> <br />
@@ -49,7 +49,13 @@ function MostrarProductos() {
                 <div className="header-section">
                     <div className="header-content">
                         <h1>Encuentra el vestido de tus sueños</h1>
-                        <input type="text" placeholder="Buscador" className="search-bar" />
+                        <input
+                            type="text"
+                            placeholder="Buscar producto por nombre"
+                            className="search-bar"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)} 
+                        />
                     </div>
                     <div className="header-image">
                     </div>
@@ -57,16 +63,20 @@ function MostrarProductos() {
 
                 <h2>Productos Disponibles</h2>
                 <div className="productos-list">
-                    {productos.map((producto) => (
-                        <div key={producto.idProducto} className="producto-item" onClick={() => verDetallesProducto(producto.idProducto)}>
-                            <img src={obtenerRutaImagen(producto.Imagen)} alt={producto.Nombre} className="producto-imagen" />
-                            <h3-nombre>{producto.Nombre}</h3-nombre>
-                            <p>Precio: {formatCurrency(producto.Precio)}</p>
-                            <p>Precio con IVA: {formatCurrency(producto.PrecioIVA)}</p>
-                            <p>Cantidad disponible: {(producto.Stock)}</p>
-                            <Button label="Agregar al Carrito" onClick={() => agregarAlCarrito(producto)} className="p-button-carrito" />
-                        </div>
-                    ))}
+                    {productosFiltrados.length > 0 ? (
+                        productosFiltrados.map((producto) => (
+                            <div key={producto.idProducto} className="producto-item">
+                                <img src={obtenerRutaImagen(producto.Imagen)} alt={producto.Nombre} className="producto-imagen" />
+                                <h3>{producto.Nombre}</h3>
+                                <p>Precio: {formatCurrency(producto.Precio)}</p>
+                                <p>Precio con IVA: {formatCurrency(producto.PrecioIVA)}</p>
+                                <p>Cantidad disponible: {producto.Stock}</p>
+                                <Button label="Agregar al Carrito" onClick={() => agregarAlCarrito(producto)} className="p-button-carrito" />
+                            </div>
+                        ))
+                    ) : (
+                        <p>No hay productos disponibles.</p>
+                    )}
                 </div>
             </div>
         </>

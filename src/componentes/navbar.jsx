@@ -3,6 +3,7 @@ import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import logo from '../img/logo.png'
 import '../css/Navbar.css';
 
 function Navbar() {
@@ -23,6 +24,12 @@ function Navbar() {
         className="p-button-text p-button-plain navbar-toggle"
         style={{ fontSize: '2em' }}
       />
+        <img 
+        src={logo} 
+        alt="Logo" 
+        className="navbar-logo"
+        style={{ height: '80px', marginLeft: '18px' }}
+      />
 
       <Sidebar visible={visible} onHide={() => setVisible(false)} className="navbar-sidebar">
         <div className="navbar-menu">
@@ -38,7 +45,7 @@ function Navbar() {
           />
         <Button
             label="Productos"
-            icon="pi pi-box"
+            icon="pi pi-shopping-bag"
             onClick={() => {
               navigate('/productos');
               setVisible(false);
@@ -46,7 +53,6 @@ function Navbar() {
             className="p-button-text navbar-menu-item"
             style={{ width: '100%', marginTop: '10px' }}
           />
-
           {!isAuthenticated ? (
             <>
               <Button
@@ -73,28 +79,18 @@ function Navbar() {
           ) : (
             <>
               {userRole === 'cliente' && (
-                <>
-                  <Button
-                    label="Ordenes"
-                    icon="pi pi-list"
-                    onClick={() => {
-                      navigate('/ordenes');
-                      setVisible(false);
-                    }}
-                    className="p-button-text navbar-menu-item"
-                    style={{ width: '100%', marginTop: '10px' }}
-                  />
-                 <Button
-                    label="Carrito"
-                    icon="pi pi-shopping-cart"
-                    onClick={() => {
-                      navigate('/carrito');
-                      setVisible(false);
-                    }}
-                    className="p-button-text navbar-menu-item"
-                    style={{ width: '100%', marginTop: '10px' }}
-                  />
-                </>
+                          <>
+                          <Button
+                            label="Ordenes"
+                            icon="pi pi-list"
+                            onClick={() => {
+                              navigate('/ordenes');
+                              setVisible(false);
+                            }}
+                            className="p-button-text navbar-menu-item"
+                            style={{ width: '100%', marginTop: '10px' }}
+                          />
+                        </>
               )}
               {userRole === 'empleado' && (
                 <>
@@ -108,7 +104,7 @@ function Navbar() {
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
-                  <Button
+                   <Button
                     label="Mantenimiento Clientes"
                     icon="pi pi-pencil"
                     onClick={() => {
@@ -118,7 +114,8 @@ function Navbar() {
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
-                  <Button
+
+                            <Button
                     label="Control de Inventario"
                     icon="pi pi-users"
                     onClick={() => {
@@ -127,12 +124,24 @@ function Navbar() {
                     }}
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
-                  />
-                  <Button
+/>
+                      <Button
                     label="Mantenimiento Empleados"
                     icon="pi pi-pencil"
                     onClick={() => {
                       navigate('/MantenimientoE');
+
+                      setVisible(false);
+                    }}
+                    className="p-button-text navbar-menu-item"
+                    style={{ width: '100%', marginTop: '10px' }}
+                  />
+                     <Button
+                    label="Mantenimiento Productos"
+                    icon="pi pi-pencil"
+                    onClick={() => {
+                      navigate('/MantenimientoP');
+
                       setVisible(false);
                     }}
                     className="p-button-text navbar-menu-item"
@@ -148,7 +157,9 @@ function Navbar() {
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
+                  
                 </>
+                
               )}
               <Button
                 label="Logout"

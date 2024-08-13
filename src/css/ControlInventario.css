@@ -1,13 +1,13 @@
 /* ControlInventarios.css */
 
-.productos-list {
+.productos-list-inventario {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
 }
 
-.producto-item {
+.producto-item-inventario {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;
@@ -16,7 +16,7 @@
     text-align: center;
 }
 
-.producto-imagen {
+.producto-imagen-inventario {
     width: px; /* Ajusta el ancho a 50px para una imagen pequeña */
 
     margin-bottom: 10px;

@@ -18,10 +18,12 @@
     color: #1f2937;
     font-weight: 600;
     padding: 1rem;
+    text-align: center;
 }
 
 .p-datatable .p-datatable-tbody > tr > td {
     padding: 1rem;
+    text-align: center;
     text-align: center;
 }
 
@@ -53,4 +55,57 @@
 .p-button.p-button-warning:hover {
     background: #d97706;
     border-color: #d97706;
+}
+
+@media screen and (max-width: 600px) {
+    .crud-table-container {
+        margin: 9rem auto 1rem auto; 
+        padding: 1rem;
+    }
+
+    .crud-table-title {
+        font-size: 1.25rem;
+    }
+
+    .p-datatable .p-datatable-thead > tr > th,
+    .p-datatable .p-datatable-tbody > tr > td {
+        padding: 0.5rem;
+    }
+
+    .p-button.p-button-icon-only {
+        width: 2rem;
+        height: 2rem;
+        margin: 0 0.25rem;
+    }
+
+    .p-button.p-button-rounded {
+        border-radius: 50%;
+    }
+}
+
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    .crud-table-container {
+        margin: 5rem auto 1.5rem auto; 
+        padding: 1.5rem;
+    }
+
+    .crud-table-title {
+        font-size: 1.35rem;
+    }
+
+    .p-datatable .p-datatable-thead > tr > th,
+    .p-datatable .p-datatable-tbody > tr > td {
+        padding: 0.75rem;
+    }
+
+    .p-button.p-button-icon-only {
+        width: 2.25rem;
+        height: 2.25rem;
+        margin: 0 0.35rem;
+    }
+
+    .p-button.p-button-rounded {
+        border-radius: 50%;
+    }
 }
