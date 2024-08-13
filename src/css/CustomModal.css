@@ -1,0 +1,30 @@
+.custom-modal .product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.custom-modal .product-image {
+    max-width: 80%; /* Ajusta la imagen para que no exceda el ancho del modal */
+    height: auto; /* Mantiene la proporción original de la imagen */
+    margin-top: 10px;
+}
+
+.custom-modal .p-dialog {
+    width: 90vw; /* Ajusta el ancho del modal al 90% del ancho de la ventana */
+    max-width: 800px; /* Ajusta el ancho máximo del modal */
+}
+
+.custom-modal .p-dialog-header {
+    text-align: center; /* Centra el texto del encabezado */
+}
+
+.custom-modal .p-dialog-footer {
+    display: flex;
+    justify-content: center; /* Centra el contenido del pie de página del modal */
+    margin-top: 10px; /* Espacio superior para el contenedor del botón */
+}
+
+.custom-modal .p-button-danger {
+    margin: 0; /* Elimina el margen para el botón de cerrar */
+}

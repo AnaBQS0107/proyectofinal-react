@@ -72,7 +72,6 @@ const MantenimientoP = () => {
             <h2 className="crud-table-title">Mantenimiento de Productos</h2>
             <DataTable value={products}>
                 <Column field="Nombre" header="Nombre" />
-                <Column field="Imagen" header="Imagen" body={(rowData) => <img src={rowData.Imagen} alt={rowData.Nombre} className="product-image" />} />
                 <Column field="Stock" header="Stock" />
                 <Column field="Precio" header="Precio" />
                 <Column field="PrecioIVA" header="Precio con IVA" />

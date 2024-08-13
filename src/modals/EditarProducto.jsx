@@ -14,6 +14,22 @@ const EditarProducto = ({ product, visible, onHide, onUpdate }) => {
         }
     }, [product]);
 
+    const calcularPrecioConIVA = (precioSinIVA) => {
+        const iva = 0.13;
+        return (parseFloat(precioSinIVA) * (1 + iva)).toFixed(2);
+    };
+
+    const handlePrecioChange = (e) => {
+        const { name, value } = e.target;
+        setProducto(prevState => {
+            const newProducto = { ...prevState, [name]: value };
+            if (name === 'Precio') {
+                newProducto.PrecioIVA = calcularPrecioConIVA(value);
+            }
+            return newProducto;
+        });
+    };
+
     const guardarCambios = async () => {
         try {
             const { idProducto, Nombre, Imagen, Stock, Precio, PrecioIVA, CatalogoEstantes_idCatalogoEstantes } = producto;
@@ -41,24 +57,17 @@ const EditarProducto = ({ product, visible, onHide, onUpdate }) => {
                         <label htmlFor="nombre" className="editar-producto-label">Nombre</label>
                         <InputText
                             id="nombre"
+                            name="Nombre"
                             className="editar-producto-input"
                             value={producto.Nombre || ''}
                             onChange={(e) => setProducto({ ...producto, Nombre: e.target.value })}
                         />
                     </div>
                     <div className="editar-producto-field">
-                        <label htmlFor="imagen" className="editar-producto-label">Imagen URL</label>
-                        <InputText
-                            id="imagen"
-                            className="editar-producto-input"
-                            value={producto.Imagen || ''}
-                            onChange={(e) => setProducto({ ...producto, Imagen: e.target.value })}
-                        />
-                    </div>
-                    <div className="editar-producto-field">
                         <label htmlFor="stock" className="editar-producto-label">Stock</label>
                         <InputText
                             id="stock"
+                            name="Stock"
                             className="editar-producto-input"
                             type="number"
                             value={producto.Stock || ''}
@@ -69,26 +78,29 @@ const EditarProducto = ({ product, visible, onHide, onUpdate }) => {
                         <label htmlFor="precio" className="editar-producto-label">Precio</label>
                         <InputText
                             id="precio"
+                            name="Precio"
                             className="editar-producto-input"
                             type="number"
                             value={producto.Precio || ''}
-                            onChange={(e) => setProducto({ ...producto, Precio: e.target.value })}
+                            onChange={handlePrecioChange}
                         />
                     </div>
                     <div className="editar-producto-field">
                         <label htmlFor="precioIVA" className="editar-producto-label">Precio con IVA</label>
                         <InputText
                             id="precioIVA"
+                            name="PrecioIVA"
                             className="editar-producto-input"
                             type="number"
                             value={producto.PrecioIVA || ''}
-                            onChange={(e) => setProducto({ ...producto, PrecioIVA: e.target.value })}
+                            disabled
                         />
                     </div>
                     <div className="editar-producto-field">
                         <label htmlFor="catalogoEstantes" className="editar-producto-label">Catalogo Estantes</label>
                         <InputText
                             id="catalogoEstantes"
+                            name="CatalogoEstantes_idCatalogoEstantes"
                             className="editar-producto-input"
                             type="number"
                             value={producto.CatalogoEstantes_idCatalogoEstantes || ''}
@@ -105,3 +117,4 @@ const EditarProducto = ({ product, visible, onHide, onUpdate }) => {
 };
 
 export default EditarProducto;
+
