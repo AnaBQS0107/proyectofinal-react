@@ -8,7 +8,7 @@ import { obtenerProductos as fetchProductosFromAPI } from '../api/obtenerProduct
 
 function ControlInventarios() {
     const [inventario, setInventario] = useState([]);
-    const [imagenVistaPrevia, setImagenVistaPrevia] = useState(null);
+    const [productoSeleccionado, setProductoSeleccionado] = useState(null);
     const [mostrarDialogo, setMostrarDialogo] = useState(false);
 
     useEffect(() => {
@@ -32,25 +32,16 @@ function ControlInventarios() {
         currency: 'CRC'
     }).format(value);
 
-    const handleAddToCart = (producto) => {
-        alert(`${producto.Nombre} se agregó al carrito`);
-    };
-
-    const mostrarImagenVistaPrevia = (imagen) => {
-        setImagenVistaPrevia(obtenerRutaImagen(imagen));
+    const mostrarDetallesProducto = (producto) => {
+        setProductoSeleccionado(producto);
         setMostrarDialogo(true);
-    };
-
-    const ocultarImagenVistaPrevia = () => {
-        setMostrarDialogo(false);
-        setImagenVistaPrevia(null);
     };
 
     const imagenBodyTemplate = (rowData) => (
         <Button 
-            label="Ver Imagen" 
-            icon="pi pi-image" 
-            onClick={() => mostrarImagenVistaPrevia(rowData.Imagen)} 
+            label="Ver Detalles" 
+            icon="pi pi-info-circle" 
+            onClick={() => mostrarDetallesProducto(rowData)} 
         />
     );
 
@@ -73,14 +64,16 @@ function ControlInventarios() {
                 <Column field="Precio" header="Costo del producto" body={costoBodyTemplate} />
                 <Column field="PrecioIVA" header="Costo con IVA" body={costoIVA_bodyTemplate} />
                 <Column field="CatalogoEstantes_idCatalogoEstantes" header="Ubicación en la bodega" body={estanteBodyTemplate} />
-                <Column header="Fotografía del producto" body={imagenBodyTemplate} />
+                <Column header="Detalles" body={imagenBodyTemplate} />
             </DataTable>
 
-            <CustomModal 
-                isVisible={mostrarDialogo} 
-                onClose={ocultarImagenVistaPrevia} 
-                imageSrc={imagenVistaPrevia} 
-            />
+            {productoSeleccionado && (
+                <CustomModal 
+                    isVisible={mostrarDialogo} 
+                    onClose={() => setMostrarDialogo(false)} 
+                    product={productoSeleccionado}
+                />
+            )}
         </div>
     );
 }
