@@ -1,217 +1,94 @@
-import React, { useState, useEffect, useRef } from 'react';  // Asegúrate de importar useRef aquí
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
-import { Dialog } from 'primereact/dialog';
-import { InputText } from 'primereact/inputtext';
-import { Password } from 'primereact/password';
-import { Toast } from 'primereact/toast';  // Asegúrate de importar Toast aquí
-import '../css/MantenimientoC.styles.css';
-const UsersList = () => {
-    const [users, setUsers] = useState([]);
-    const [displayDialog, setDisplayDialog] = useState(false);
-    const [isEditing, setIsEditing] = useState(false);
-    const [selectedUser, setSelectedUser] = useState(null);
-    const [newUser, setNewUser] = useState({
-        idCedula: "",
-        Nombre: "",
-        Apellido1: "",
-        Apellido2: "",
-        Direccion: "",
-        Telefono: "",
-        CorreoElectronico: "",
-        Contraseña: ""
-    });
-    const toast = useRef(null); 
+import { Toast } from 'primereact/toast';
+import { obtenerClientes, eliminarCliente } from '../api/clientes.api';
+import EditarCliente from '../modals/EditarCliente';
+import '../css/MantenimientoC.styles.css'; // Ajusta el nombre del archivo CSS si es necesario
+
+const MantenimientoC = () => {
+    const [clientes, setClientes] = useState([]);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [selectedCliente, setSelectedCliente] = useState(null);
 
     useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                const response = await axios.get('http://localhost:4000/persona');
-                console.log('Usuarios cargados:', response.data);
-                setUsers(response.data);
-            } catch (error) {
-                console.error('Error al cargar usuarios:', error);
-                toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudieron cargar los usuarios', life: 3000 });
-            }
-        };
-        fetchUsers();
+        fetchClientes();
     }, []);
 
-    const handleAddUser = async () => {
+    const fetchClientes = async () => {
         try {
-            await axios.post('http://localhost:4000/insertarCliente', newUser);
-            setUsers([...users, newUser]);
-            resetDialog();
-            toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Usuario agregado correctamente', life: 3000 });
+            const data = await obtenerClientes();
+            setClientes(data);
         } catch (error) {
-            console.error('Error al agregar usuario:', error.response ? error.response.data : error.message);
-            toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo agregar el usuario', life: 3000 });
+            console.error('Error al cargar clientes:', error);
         }
     };
 
-    const handleEditUser = async () => {
+    const showSuccessToast = (message) => {
+        window.toast.show({ severity: 'success', summary: 'Éxito', detail: message });
+    };
+
+    const showErrorToast = (message) => {
+        window.toast.show({ severity: 'error', summary: 'Error', detail: message });
+    };
+
+    const actionBodyTemplate = (rowData) => (
+        <React.Fragment>
+            <Button 
+                icon="pi pi-pencil" 
+                className="p-button-rounded p-button-success p-mr-2" 
+                onClick={() => editCliente(rowData)} 
+            />
+            <Button 
+                icon="pi pi-trash" 
+                className="p-button-rounded p-button-danger" 
+                onClick={() => deleteCliente(rowData.idCedula)} 
+            />
+        </React.Fragment>
+    );
+
+    const editCliente = (cliente) => {
+        setSelectedCliente(cliente);
+        setIsModalVisible(true);
+    };
+
+    const deleteCliente = async (idCedula) => {
         try {
-            await axios.put('http://localhost:4000/actualizarCliente', newUser);
-            setUsers(users.map(user => (user.idCedula === newUser.idCedula ? newUser : user)));
-            resetDialog();
-            toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Usuario actualizado correctamente', life: 3000 });
+            await eliminarCliente(idCedula);
+            setClientes(clientes.filter(cliente => cliente.idCedula !== idCedula));
+            showSuccessToast('Cliente eliminado con éxito.');
         } catch (error) {
-            console.error('Error al actualizar usuario:', error);
-            toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo actualizar el usuario', life: 3000 });
+            showErrorToast('Error al eliminar cliente.');
+            console.error('Error al eliminar cliente:', error);
         }
     };
 
-    const handleDeleteUser = async (idCedula) => {
-        try {
-            await axios.delete(`http://localhost:4000/eliminarCliente/${idCedula}`);
-            setUsers(users.filter(user => user.idCedula !== idCedula));
-            toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Usuario eliminado correctamente', life: 3000 });
-        } catch (error) {
-            console.error('Error al eliminar usuario:', error);
-            toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo eliminar el usuario', life: 3000 });
-        }
-    };
-
-    const resetDialog = () => {
-        setDisplayDialog(false);
-        setIsEditing(false);
-        setNewUser({
-            idCedula: "",
-            Nombre: "",
-            Apellido1: "",
-            Apellido2: "",
-            Direccion: "",
-            Telefono: "",
-            CorreoElectronico: "",
-            Contraseña: ""
-        });
-    };
-
-    const openDialogForEditing = (user) => {
-        setIsEditing(true);
-        setNewUser(user);
-        setDisplayDialog(true);
-    };
-
-    const actionTemplate = (rowData) => {
-        return (
-            <div className="action-buttons">
-                <Button
-                    icon="pi pi-pencil"
-                    label="Editar"
-                    className="p-button-rounded p-button-success p-mr-2"
-                    onClick={() => openDialogForEditing(rowData)}
-                />
-                <Button
-                    icon="pi pi-trash"
-                    label="Eliminar"
-                    className="p-button-rounded p-button-danger"
-                    onClick={() => handleDeleteUser(rowData.idCedula)}
-                />
-            </div>
-        );
+    const handleUpdate = () => {
+        fetchClientes();  
     };
 
     return (
-        <div className="users-list">
-            <Toast ref={toast} />
-            <h1>Lista de Usuarios</h1>
-            <Button
-                label="Agregar Usuario"
-                icon="pi pi-plus"
-                onClick={() => setDisplayDialog(true)}
-                className="p-button-success add-user-btn"
-            />
-            <DataTable value={users} className="p-datatable-sm">
-                <Column field="idCedula" header="Cédula" />
+        <div className="crud-table-container">
+            <Toast ref={(el) => (window.toast = el)} />
+            <h2 className="crud-table-title">Mantenimiento de Clientes</h2>
+            <DataTable value={clientes}>
                 <Column field="Nombre" header="Nombre" />
-                <Column field="Apellido1" header="Primer Apellido" />
-                <Column field="Apellido2" header="Segundo Apellido" />
-                <Column field="Direccion" header="Dirección" />
-                <Column field="Telefono" header="Teléfono" />
-                <Column field="CorreoElectronico" header="Correo Electrónico" />
-                <Column body={actionTemplate} header="Acciones" />
+                <Column field="Apellido1" header="Apellido 1" />
+                <Column field="Apellido2" header="Apellido 2" />
+                <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }} />
             </DataTable>
 
-            <Dialog header={isEditing ? "Editar Usuario" : "Agregar Usuario"} visible={displayDialog} onHide={resetDialog}>
-                <div className="p-fluid">
-                    <div className="p-field">
-                        <label htmlFor="idCedula">Cédula</label>
-                        <InputText
-                            id="idCedula"
-                            value={newUser.idCedula}
-                            onChange={(e) => setNewUser({ ...newUser, idCedula: e.target.value })}
-                            disabled={isEditing}
-                        />
-                    </div>
-                    <div className="p-field">
-                        <label htmlFor="Nombre">Nombre</label>
-                        <InputText
-                            id="Nombre"
-                            value={newUser.Nombre}
-                            onChange={(e) => setNewUser({ ...newUser, Nombre: e.target.value })}
-                        />
-                    </div>
-                    <div className="p-field">
-                        <label htmlFor="Apellido1">Primer Apellido</label>
-                        <InputText
-                            id="Apellido1"
-                            value={newUser.Apellido1}
-                            onChange={(e) => setNewUser({ ...newUser, Apellido1: e.target.value })}
-                        />
-                    </div>
-                    <div className="p-field">
-                        <label htmlFor="Apellido2">Segundo Apellido</label>
-                        <InputText
-                            id="Apellido2"
-                            value={newUser.Apellido2}
-                            onChange={(e) => setNewUser({ ...newUser, Apellido2: e.target.value })}
-                        />
-                    </div>
-                    <div className="p-field">
-                        <label htmlFor="Direccion">Dirección</label>
-                        <InputText
-                            id="Direccion"
-                            value={newUser.Direccion}
-                            onChange={(e) => setNewUser({ ...newUser, Direccion: e.target.value })}
-                        />
-                    </div>
-                    <div className="p-field">
-                        <label htmlFor="Telefono">Teléfono</label>
-                        <InputText
-                            id="Telefono"
-                            value={newUser.Telefono}
-                            onChange={(e) => setNewUser({ ...newUser, Telefono: e.target.value })}
-                        />
-                    </div>
-                    <div className="p-field">
-                        <label htmlFor="CorreoElectronico">Correo Electrónico</label>
-                        <InputText
-                            id="CorreoElectronico"
-                            value={newUser.CorreoElectronico}
-                            onChange={(e) => setNewUser({ ...newUser, CorreoElectronico: e.target.value })}
-                        />
-                    </div>
-                    <div className="p-field">
-                        <label htmlFor="Contraseña">Contraseña</label>
-                        <Password
-                            id="Contraseña"
-                            value={newUser.Contraseña}
-                            onChange={(e) => setNewUser({ ...newUser, Contraseña: e.target.value })}
-                            feedback={false}
-                        />
-                    </div>
-                </div>
-                <Button
-                    label={isEditing ? "Actualizar" : "Agregar"}
-                    icon="pi pi-check"
-                    onClick={isEditing ? handleEditUser : handleAddUser}
+            {isModalVisible && (
+                <EditarCliente 
+                    cliente={selectedCliente} 
+                    visible={isModalVisible} 
+                    onHide={() => setIsModalVisible(false)} 
+                    onUpdate={handleUpdate}  
                 />
-            </Dialog>
+            )}
         </div>
     );
 };
 
-export default UsersList;
+export default MantenimientoC;

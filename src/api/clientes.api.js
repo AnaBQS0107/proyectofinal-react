@@ -16,26 +16,50 @@ export const insertarCliente = async (clienteNuevo) => {
   }
 };
 
-export const fetchUsers = async () => {
-  try {
-      const response = await axios.get(`http://localhost:4000/insertarCliente`);
-      return response.data;
-  } catch (error) {
-      console.error('Error al cargar usuarios:', error);
-      if (error.response) {
-          // La solicitud se hizo y el servidor respondió con un estado diferente a 2xx
-          console.error('Datos de error del servidor:', error.response.data);
-          console.error('Estado de error:', error.response.status);
-          console.error('Encabezados de error:', error.response.headers);
-      } else if (error.request) {
-          // La solicitud se hizo pero no se recibió respuesta
-          console.error('No se recibió respuesta del servidor:', error.request);
-      } else {
-          // Algo ocurrió al configurar la solicitud
-          console.error('Error al configurar la solicitud:', error.message);
-      }
-      throw error;
-  }
+// Función para actualizar un cliente existente
+export const actualizarCliente = async (idCedula, clienteActualizado) => {
+    try {
+        const { Nombre, Apellido1, Apellido2 } = clienteActualizado;
+        const response = await axios.put(`http://localhost:4000/actualizarCliente/${idCedula}`, {
+            Nombre,
+            Apellido1,
+            Apellido2
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error al actualizar el cliente:", error);
+        throw error;
+    }
 };
 
+// Función para obtener un cliente por ID
+export const obtenerClientePorId = async (idCedula) => {
+    try {
+        const response = await axios.get(`http://localhost:4000/obtenerCliente/${idCedula}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener el cliente por ID:", error);
+        throw error;
+    }
+};
 
+// Función para obtener todos los clientes
+export const obtenerClientes = async () => {
+    try {
+        const response = await axios.get('http://localhost:4000/persona');
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener los clientes:", error);
+        throw error;
+    }
+};
+
+// Función para eliminar un cliente
+export const eliminarCliente = async (idCedula) => {
+    try {
+        await axios.delete(`http://localhost:4000/eliminarCliente/${idCedula}`);
+    } catch (error) {
+        console.error("Error al eliminar el cliente:", error);
+        throw error;
+    }
+};
