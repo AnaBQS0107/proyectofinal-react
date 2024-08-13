@@ -12,7 +12,7 @@ function RegistroPedidos() {
   const [precioSinIVA, setPrecioSinIVA] = useState('');
   const [precioConIVA, setPrecioConIVA] = useState('');
   const [estante, setEstante] = useState('');
-  const [imagen, setImagen] = useState(null); // Cambiar a null para manejar archivos
+  const [imagen, setImagen] = useState(null);
   const toast = useRef(null);
 
   const estantes = [
@@ -24,6 +24,15 @@ function RegistroPedidos() {
   const calcularPrecioConIVA = (precioSinIVA) => {
     const iva = 0.13; 
     return (parseFloat(precioSinIVA) * (1 + iva)).toFixed(2);
+  };
+
+  const resetFields = () => {
+    setNombreProducto('');
+    setCantidadStock('');
+    setPrecioSinIVA('');
+    setPrecioConIVA('');
+    setEstante('');
+    setImagen(null);
   };
 
   const handleSubmit = async (e) => {
@@ -40,8 +49,9 @@ function RegistroPedidos() {
     }
 
     try {
-      await insertarProducto(formData); // Asegúrate de que insertarProducto maneje FormData
+      await insertarProducto(formData);
       toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Producto registrado correctamente', life: 3000 });
+      resetFields(); // Limpiar los campos después del éxito
     } catch (error) {
       toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo registrar el producto', life: 3000 });
     }
@@ -60,7 +70,7 @@ function RegistroPedidos() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setImagen(file); // Guarda el archivo en el estado
+      setImagen(file);
     }
   };
 

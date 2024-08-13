@@ -37,9 +37,10 @@
     background-color: #f5f5f5;
 }
 
+
 /* Botón de ver imagen */
 .p-datatable-customers .p-button {
-    background-color: #60b37e;
+    background-color: #000000;
     color: white;
     border: none;
 }

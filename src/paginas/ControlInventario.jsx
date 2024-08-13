@@ -39,7 +39,7 @@ function ControlInventarios() {
 
     const imagenBodyTemplate = (rowData) => (
         <Button 
-            label="Ver Detalles" 
+            label="" 
             icon="pi pi-info-circle" 
             onClick={() => mostrarDetallesProducto(rowData)} 
         />
