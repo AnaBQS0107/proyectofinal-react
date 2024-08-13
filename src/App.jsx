@@ -44,7 +44,7 @@ function App() {
                   <Route path="/MantenimientoC" element={<MantenimientoC />} />
 
                   <Route path="/ControlI" element={<ControlI />} />
-<Route path = '/MantenimientoP' element={<MantenimientoP />}/>
+                  <Route path = '/MantenimientoP' element={<MantenimientoP />}/>
                   <Route path="/MantenimientoE" element={<MantenimientoE />} />
                 </>
               )}
