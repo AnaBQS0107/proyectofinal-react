@@ -8,7 +8,10 @@
 }
 
 
-
+.h3-Nombre {
+  text-align: center !important;
+  color: #000000 !important;
+}
 div.header-image {
   background-image: url('../img/boutique.jpg');
   background-size: cover;

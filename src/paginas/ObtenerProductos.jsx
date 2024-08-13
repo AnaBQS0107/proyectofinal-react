@@ -67,7 +67,7 @@ function MostrarProductos() {
                         productosFiltrados.map((producto) => (
                             <div key={producto.idProducto} className="producto-item">
                                 <img src={obtenerRutaImagen(producto.Imagen)} alt={producto.Nombre} className="producto-imagen" />
-                                <h3>{producto.Nombre}</h3>
+                                <h3 class="h3-Nombre">{producto.Nombre}</h3>
                                 <p>Precio: {formatCurrency(producto.Precio)}</p>
                                 <p>Precio con IVA: {formatCurrency(producto.PrecioIVA)}</p>
                                 <p>Cantidad disponible: {producto.Stock}</p>
