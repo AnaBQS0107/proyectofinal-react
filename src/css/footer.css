@@ -53,13 +53,16 @@
     padding: 0 20px;
   }
   
+  .img.footer-logo{
+    height: 1000px !important;
+  }
   @media (max-width: 768px) {
     .footer {
       padding: 30px 0 15px;
     }
     
     .footer-logo {
-      height: 60px;
+      height: 100px !important;
     }
     
     .company-info {

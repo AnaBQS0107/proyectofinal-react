@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'primereact/button';
 import { Divider } from 'primereact/divider';
-import LogoFooter from '../img/LogoFooter.png'; 
+import LogoFooter from '../img/logo.png'; 
 import '../css/footer.css';
 
 const Footer = () => {

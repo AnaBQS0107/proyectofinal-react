@@ -75,7 +75,7 @@ const MantenimientoE = () => {
             <DataTable value={employees}>
                 <Column field="Nombre" header="Nombre" />
                 <Column field="Apellido1" header="Primer apellido" />
-                <Column field="Apellido2" header="segundo apellido" />
+                <Column field="Apellido2" header="Segundo apellido" />
                 <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }} />
             </DataTable>
 

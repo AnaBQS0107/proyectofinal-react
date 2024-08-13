@@ -3,7 +3,7 @@ import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import logo from '../img/logo.png';
+import logo from '../img/LogoFooter.png';
 import '../css/Navbar.css';
 
 function Navbar() {
@@ -28,7 +28,7 @@ function Navbar() {
         src={logo} 
         alt="Logo" 
         className="navbar-logo"
-        style={{ height: '80px', marginLeft: '18px' }}
+        style={{ height: '60px', marginLeft: '18px' }}
       />
 
       <Sidebar visible={visible} onHide={() => setVisible(false)} className="navbar-sidebar">
