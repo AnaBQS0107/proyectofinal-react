@@ -39,5 +39,4 @@ export const EliminarEmpleado = async (cedula) => {
     }
 };
 
-  await axios.post("http://localhost:4000/insertarEmpleado", empleadoNuevo);
 

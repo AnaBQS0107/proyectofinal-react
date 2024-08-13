@@ -107,19 +107,34 @@ function Navbar() {
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
-<<<<<<< HEAD
+
                             <Button
                     label="Control de Inventario"
                     icon="pi pi-users"
                     onClick={() => {
                       navigate('/ControlI');
-=======
+                      setVisible(false);
+                    }}
+                    className="p-button-text navbar-menu-item"
+                    style={{ width: '100%', marginTop: '10px' }}
+/>
                       <Button
                     label="Mantenimiento Empleados"
                     icon="pi pi-pencil"
                     onClick={() => {
                       navigate('/MantenimientoE');
->>>>>>> 68896562b6d1fb478d09eebf24854e13bdf9bd38
+
+                      setVisible(false);
+                    }}
+                    className="p-button-text navbar-menu-item"
+                    style={{ width: '100%', marginTop: '10px' }}
+                  />
+                     <Button
+                    label="Mantenimiento Productos"
+                    icon="pi pi-pencil"
+                    onClick={() => {
+                      navigate('/MantenimientoP');
+
                       setVisible(false);
                     }}
                     className="p-button-text navbar-menu-item"
