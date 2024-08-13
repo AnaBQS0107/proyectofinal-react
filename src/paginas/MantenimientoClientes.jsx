@@ -5,7 +5,7 @@ import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import { obtenerClientes, eliminarCliente } from '../api/clientes.api';
 import EditarCliente from '../modals/EditarCliente';
-import '../css/MantenimientoC.styles.css'; // Ajusta el nombre del archivo CSS si es necesario
+import '../css/MantenimientoC.styles.css'; 
 
 const MantenimientoC = () => {
     const [clientes, setClientes] = useState([]);
@@ -37,12 +37,12 @@ const MantenimientoC = () => {
         <React.Fragment>
             <Button 
                 icon="pi pi-pencil" 
-                className="p-button-rounded p-button-success p-mr-2" 
+                className=" p-button-success p-mr-2" 
                 onClick={() => editCliente(rowData)} 
             />
             <Button 
                 icon="pi pi-trash" 
-                className="p-button-rounded p-button-danger" 
+                className=" p-button-danger" 
                 onClick={() => deleteCliente(rowData.idCedula)} 
             />
         </React.Fragment>
@@ -74,8 +74,8 @@ const MantenimientoC = () => {
             <h2 className="crud-table-title">Mantenimiento de Clientes</h2>
             <DataTable value={clientes}>
                 <Column field="Nombre" header="Nombre" />
-                <Column field="Apellido1" header="Apellido 1" />
-                <Column field="Apellido2" header="Apellido 2" />
+                <Column field="Apellido1" header="Primer Apellido" />
+                <Column field="Apellido2" header="Segundo Apellido" />
                 <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }} />
             </DataTable>
 

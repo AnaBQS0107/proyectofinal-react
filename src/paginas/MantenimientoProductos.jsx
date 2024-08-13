@@ -35,12 +35,12 @@ const MantenimientoP = () => {
         <React.Fragment>
             <Button 
                 icon="pi pi-pencil" 
-                className="p-button-rounded p-button-success p-mr-2" 
+                className=" p-button-success p-mr-2" 
                 onClick={() => editProduct(rowData)} 
             />
             <Button 
                 icon="pi pi-trash" 
-                className="p-button-rounded p-button-danger" 
+                className=" p-button-danger" 
                 onClick={() => deleteProduct(rowData.idProducto)} 
             />
         </React.Fragment>

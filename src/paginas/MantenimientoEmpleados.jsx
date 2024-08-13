@@ -37,12 +37,12 @@ const MantenimientoE = () => {
         <React.Fragment>
             <Button 
                 icon="pi pi-pencil" 
-                className="p-button-rounded p-button-success p-mr-2" 
+                className=" p-button-success p-mr-2" 
                 onClick={() => editEmployee(rowData)} 
             />
             <Button 
                 icon="pi pi-trash" 
-                className="p-button-rounded p-button-danger" 
+                className=" p-button-danger" 
                 onClick={() => deleteEmployee(rowData.Persona_idCedula)} 
             />
         </React.Fragment>
@@ -74,8 +74,8 @@ const MantenimientoE = () => {
             <h2 className="crud-table-title">Mantenimiento de Empleados</h2>
             <DataTable value={employees}>
                 <Column field="Nombre" header="Nombre" />
-                <Column field="Apellido1" header="Apellido 1" />
-                <Column field="Apellido2" header="Apellido 2" />
+                <Column field="Apellido1" header="Primer apellido" />
+                <Column field="Apellido2" header="segundo apellido" />
                 <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }} />
             </DataTable>
 

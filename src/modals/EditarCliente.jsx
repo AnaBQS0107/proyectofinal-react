@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import { actualizarCliente } from '../api/clientes.api'; // Ajusta la importación si es necesario
+import { actualizarCliente } from '../api/clientes.api'; 
+import '../css/modalClientes.styles.css'; 
 
 const EditarCliente = ({ cliente, visible, onHide, onUpdate }) => {
     const [clienteData, setClienteData] = useState({});
@@ -33,45 +34,49 @@ const EditarCliente = ({ cliente, visible, onHide, onUpdate }) => {
     };
 
     return (
-        <Dialog header="Editar Cliente" visible={visible} style={{ width: '50vw' }} modal onHide={onHide}>
+        <Dialog header="Editar Cliente" visible={visible} className="editar-cliente-dialog" modal onHide={onHide}>
             {clienteData ? (
-                <div>
-                    <div className="p-field">
-                        <label htmlFor="nombre">Nombre</label>
+                <div className="editar-cliente-content">
+                    <div className="editar-cliente-field">
+                        <label htmlFor="nombre" className="editar-cliente-label">Nombre</label>
                         <InputText
                             id="nombre"
+                            className="editar-cliente-input"
                             value={clienteData.Nombre || ''}
                             onChange={(e) => setClienteData({ ...clienteData, Nombre: e.target.value })}
                         />
                     </div>
-                    <div className="p-field">
-                        <label htmlFor="apellido1">Primer Apellido</label>
+                    <div className="editar-cliente-field">
+                        <label htmlFor="apellido1" className="editar-cliente-label">Primer Apellido</label>
                         <InputText
                             id="apellido1"
+                            className="editar-cliente-input"
                             value={clienteData.Apellido1 || ''}
                             onChange={(e) => setClienteData({ ...clienteData, Apellido1: e.target.value })}
                         />
                     </div>
-                    <div className="p-field">
-                        <label htmlFor="apellido2">Segundo Apellido</label>
+                    <div className="editar-cliente-field">
+                        <label htmlFor="apellido2" className="editar-cliente-label">Segundo Apellido</label>
                         <InputText
                             id="apellido2"
+                            className="editar-cliente-input"
                             value={clienteData.Apellido2 || ''}
                             onChange={(e) => setClienteData({ ...clienteData, Apellido2: e.target.value })}
                         />
                     </div>
-                    <div className="p-field">
-                        <label htmlFor="correo">Correo Electrónico</label>
+                    <div className="editar-cliente-field">
+                        <label htmlFor="correo" className="editar-cliente-label">Correo Electrónico</label>
                         <InputText
                             id="correo"
+                            className="editar-cliente-input"
                             value={clienteData.CorreoElectronico || ''}
                             onChange={(e) => setClienteData({ ...clienteData, CorreoElectronico: e.target.value })}
                         />
                     </div>
-                    <Button label="Guardar Cambios" icon="pi pi-save" onClick={guardarCambios} />
+                    <Button label="Guardar Cambios" icon="pi pi-save" className="editar-cliente-save-button" onClick={guardarCambios} />
                 </div>
             ) : (
-                <p>No se encontró información del cliente.</p>
+                <p className="editar-cliente-no-info">No se encontró información del cliente.</p>
             )}
         </Dialog>
     );
