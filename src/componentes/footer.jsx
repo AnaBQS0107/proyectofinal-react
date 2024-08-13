@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from 'primereact/button';
 import { Divider } from 'primereact/divider';
+import LogoFooter from '../img/LogoFooter.png'; 
 import '../css/footer.css';
-import logoFo from '../img/logoFo.png';
 
 const Footer = () => {
   return (
@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="center-content">
           <img
-            src={logoFo}
+            src={LogoFooter} 
             alt="Fashion Fusion Logo"
             className="footer-logo"
           />
