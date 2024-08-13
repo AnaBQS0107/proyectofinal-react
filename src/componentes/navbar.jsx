@@ -158,7 +158,7 @@ function Navbar() {
               )}
               <Button
                 label="Logout"
-                icon="pi pi-sign-out"
+                icon="pi pi-external-link"
                 onClick={handleLogout}
                 className="p-button-text navbar-menu-item"
                 style={{ width: '100%', marginTop: '10px' }}
