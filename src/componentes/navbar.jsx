@@ -3,6 +3,7 @@ import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import logo from '../img/logo.png'
 import '../css/Navbar.css';
 
 function Navbar() {
@@ -22,6 +23,12 @@ function Navbar() {
         onClick={() => setVisible(true)}
         className="p-button-text p-button-plain navbar-toggle"
         style={{ fontSize: '2em' }}
+      />
+        <img 
+        src={logo} 
+        alt="Logo" 
+        className="navbar-logo"
+        style={{ height: '80px', marginLeft: '18px' }}
       />
 
       <Sidebar visible={visible} onHide={() => setVisible(false)} className="navbar-sidebar">
