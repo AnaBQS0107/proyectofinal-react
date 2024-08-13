@@ -45,7 +45,7 @@ function Navbar() {
           />
         <Button
             label="Productos"
-            icon="pi pi-box"
+            icon="pi pi-shopping-bag"
             onClick={() => {
               navigate('/productos');
               setVisible(false);
