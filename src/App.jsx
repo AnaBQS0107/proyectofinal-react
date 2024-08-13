@@ -12,6 +12,7 @@ import MostrarProductos from './paginas/ObtenerProductos';
 import ControlI from './paginas/ControlInventario';
 import MantenimientoP from './paginas/MantenimientoProductos';
 import MantenimientoE from './paginas/MantenimientoEmpleados';
+import Footer from './componentes/footer';
 
 
 
@@ -52,6 +53,7 @@ function App() {
           )}
           <Route path="/login" element={<LoginSesion />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
