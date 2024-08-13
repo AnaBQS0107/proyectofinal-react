@@ -37,3 +37,21 @@
   .navbar-menu-item:hover {
     background-color: #2d2d2d;
   }
+
+  .navbar-cart {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 3em; /* Aumentado el tamaño del icono */
+    padding: 0.5em;  /* Añadido padding para hacerlo más clickable */
+    color: #000000;
+    cursor: pointer;
+    z-index: 101; /* Para asegurarse de que esté por encima de otros elementos */
+  }
+  
+  .navbar-cart:hover {
+    color: #d69b67; /* Cambia el color al pasar el ratón, opcional */
+  }
+

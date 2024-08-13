@@ -6,7 +6,7 @@ import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import '../css/ControlInventario.css';
 
-import { obtenerProductos as fetchProductosFromAPI } from '../api/producto.api';
+import { ObtenerProductos } from '../api/producto.api';
 
 
 function ControlInventarios() {
@@ -17,7 +17,7 @@ function ControlInventarios() {
     useEffect(() => {
         const fetchProductos = async () => {
             try {
-                const productosData = await fetchProductosFromAPI();
+                const productosData = await ObtenerProductos();
                 setInventario(productosData);
             } catch (error) {
                 console.error('Error al cargar productos:', error);

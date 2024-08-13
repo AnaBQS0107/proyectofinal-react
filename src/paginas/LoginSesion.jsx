@@ -23,6 +23,7 @@ function LoginForm() {
       console.log('Respuesta del login:', response);
 
       if (response.data && (response.data.rol === 'cliente' || response.data.rol === 'empleado')) {
+        localStorage.setItem('ClienteId', response.data.ClienteId);
         login(response.data.rol);
         navigate('/'); 
       } else {

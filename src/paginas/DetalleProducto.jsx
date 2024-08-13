@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from 'primereact/button';
 import { obtenerProductoPorId } from '../api/producto.api';
 import '../css/DetalleProducto.css';
-import { crearOrden, agregarProductoACarrito } from '../api/ordenes.api';
+import { crearOrden, agregarProductoACarrito} from '../api/ordenes.api';
 
 function DetalleProducto() {
     const { idProducto } = useParams();
     const [producto, setProducto] = useState(null);
     const [cantidad, setCantidad] = useState(1);
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         const fetchProducto = async () => {
@@ -29,7 +29,11 @@ function DetalleProducto() {
     }, [idProducto]);
 
     const obtenerClienteId = () => {
-        return localStorage.getItem('clienteId') || null;
+        const clienteId = localStorage.getItem('ClienteId');
+        if (!clienteId) {
+            console.warn('No se encontró clienteId en localStorage. Redireccionando a login.');
+        }
+        return clienteId || null;
     };
 
     const aumentarCantidad = () => {
@@ -47,6 +51,13 @@ function DetalleProducto() {
     const manejarAgregarAlCarrito = async () => {
         try {
             const clienteId = obtenerClienteId();
+
+            if (!clienteId) {
+                // If not authenticated, redirect to login
+                navigate('/login');
+                return;
+            }
+
             let idOrdenCliente = localStorage.getItem('idOrdenCliente');
 
             if (!idOrdenCliente) {
@@ -54,10 +65,10 @@ function DetalleProducto() {
                 localStorage.setItem('idOrdenCliente', idOrdenCliente);
             }
 
-            await agregarProductoACarrito(idOrdenCliente, producto.idProducto, cantidad);
+            await agregarProductoACarrito(clienteId, producto.idProducto, cantidad);
             alert(`${producto.Nombre} se agregó al carrito con una cantidad de ${cantidad}`);
             
-            // Redirect to cart page
+            // Redirect to the cart or orders page
             navigate('/carrito');
         } catch (error) {
             console.error('Error al agregar producto al carrito:', error);

@@ -30,6 +30,14 @@ function Navbar() {
         className="navbar-logo"
         style={{ height: '80px', marginLeft: '18px' }}
       />
+      <Button 
+       
+        icon="pi pi-shopping-cart" 
+        className="navbar-cart" 
+        onClick={() => {
+          navigate('/carrito'); 
+        }}
+      />
 
       <Sidebar visible={visible} onHide={() => setVisible(false)} className="navbar-sidebar">
         <div className="navbar-menu">

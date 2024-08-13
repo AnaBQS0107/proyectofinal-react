@@ -13,6 +13,10 @@ import ControlI from './paginas/ControlInventario';
 import MantenimientoP from './paginas/MantenimientoProductos';
 import MantenimientoE from './paginas/MantenimientoEmpleados';
 
+import Detalles from './paginas/DetalleProducto';
+import Ordenes from './paginas/Ordenes';
+import Carrito from './paginas/Carrito';
+
 
 
 function App() {
@@ -24,7 +28,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Inicio />} />
-          <Route path="/productos" element={<MostrarProductos />} />  
+          <Route path="/productos" element={<MostrarProductos />} />
+          <Route path="/productos/:idProducto" element={<Detalles />} />
+          <Route path="/carrito" element={<Carrito />} />
+ 
           {!isAuthenticated ? (
             <>
               <Route path="/login" element={<LoginSesion />} />
@@ -35,6 +42,7 @@ function App() {
               {userRole === 'cliente' && (
                 <>
                   <Route path="/RegistroC" element={<RegistroClientes />} />
+                  <Route path="Ordenes" element={<Ordenes />} />
                 </>
               )}
               {userRole === 'empleado' && (
@@ -44,7 +52,7 @@ function App() {
                   <Route path="/MantenimientoC" element={<MantenimientoC />} />
 
                   <Route path="/ControlI" element={<ControlI />} />
-<Route path = '/MantenimientoP' element={<MantenimientoP />}/>
+                  <Route path = '/MantenimientoP' element={<MantenimientoP />}/>
                   <Route path="/MantenimientoE" element={<MantenimientoE />} />
                 </>
               )}
