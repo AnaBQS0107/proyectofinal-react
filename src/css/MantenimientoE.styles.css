@@ -1,0 +1,115 @@
+.crud-table-container {
+    margin-top: 2rem;
+    padding: 8rem;
+
+}
+
+.crud-table-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+    background: #f3f4f6;
+    color: #1f2937;
+    font-weight: 600;
+    padding: 1rem;
+    text-align: center;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+    padding: 1rem;
+    text-align: center;
+    text-align: center;
+}
+
+.p-button.p-button-icon-only {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 0.5rem;
+}
+
+.p-button.p-button-rounded {
+    border-radius: 50%;
+}
+
+.p-button.p-button-success {
+    background: #679b7a;
+    border-color: #6ca07f;
+}
+
+.p-button.p-button-success:hover {
+    background: #60b37e;
+    border-color: #16a34a;
+}
+
+.p-button.p-button-warning {
+    background: #f59e0b;
+    border-color: #f59e0b;
+}
+
+.p-button.p-button-warning:hover {
+    background: #d97706;
+    border-color: #d97706;
+}
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 600px) {
+    .crud-table-container {
+        margin: 9rem auto 1rem auto;
+        padding: 1rem;
+    }
+
+    .crud-table-title {
+        font-size: 1.25rem;
+    }
+
+    .p-datatable .p-datatable-thead > tr > th,
+    .p-datatable .p-datatable-tbody > tr > td {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .p-button.p-button-icon-only {
+        width: 2rem;
+        height: 2rem;
+        margin: 0 0.25rem;
+    }
+
+    /* Ocultar columnas excepto Código, Nombre e Imagen */
+    .p-datatable .p-datatable-thead > tr > th:nth-child(n+3):not(:last-child),
+    .p-datatable .p-datatable-tbody > tr > td:nth-child(n+3):not(:last-child) {
+        display: none;
+    }
+}
+
+/* Estilos para pantallas medianas */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    .crud-table-container {
+        margin: 5rem auto 1.5rem auto;
+        padding: 1.5rem;
+    }
+
+    .crud-table-title {
+        font-size: 1.35rem;
+    }
+
+    .p-datatable .p-datatable-thead > tr > th,
+    .p-datatable .p-datatable-tbody > tr > td {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .p-button.p-button-icon-only {
+        width: 2.25rem;
+        height: 2.25rem;
+        margin: 0 0.35rem;
+    }
+
+    /* Ocultar columnas excepto Código, Nombre e Imagen */
+    .p-datatable .p-datatable-thead > tr > th:nth-child(n+2):not(:last-child),
+    .p-datatable .p-datatable-tbody > tr > td:nth-child(n+2):not(:last-child) {
+        display: none;
+    }
+}

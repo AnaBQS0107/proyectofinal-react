@@ -1,0 +1,103 @@
+
+.editar-cliente-dialog.p-dialog {
+    max-width: 500px;
+    width: 90%;
+    margin: auto;
+    background-color: #F4E6D4;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.editar-cliente-dialog .p-dialog-header {
+    background-color: #C98F54;
+    color: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding: 1.5rem;
+}
+
+.editar-cliente-dialog .p-dialog-content {
+    padding: 2rem;
+}
+
+.editar-cliente-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.editar-cliente-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.editar-cliente-label {
+    font-weight: bold;
+    color: #4A4A4A;
+}
+
+.editar-cliente-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #D1B08C;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.editar-cliente-input:focus {
+    border-color: #C98F54;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(201, 143, 84, 0.2);
+}
+
+.editar-cliente-save-button {
+    background-color: #60b37e;
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center;
+}
+
+.editar-cliente-save-button:hover {
+    background-color: #2d7c3a;
+}
+
+.editar-cliente-no-info {
+    text-align: center;
+    color: #4A4A4A;
+}
+
+
+@media screen and (max-width: 600px) {
+    .editar-cliente-dialog.p-dialog {
+        width: 95%;
+    }
+
+    .editar-cliente-dialog .p-dialog-content {
+        padding: 1rem;
+    }
+
+    .editar-cliente-save-button {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    .editar-cliente-dialog.p-dialog {
+        width: 80%;
+    }
+
+    .editar-cliente-dialog .p-dialog-content {
+        padding: 1.5rem;
+    }
+
+    .editar-cliente-save-button {
+        width: auto;
+        padding: 0.75rem 2rem;
+    }
+}

@@ -1,0 +1,59 @@
+.ordenes-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2d2d2d;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.p-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.p-field label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.p-field input,
+.p-field .p-dropdown {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.orden-detalles {
+    margin-top: 2rem;
+}
+
+.orden-detalles h2 {
+    margin-bottom: 1rem;
+    color: #c68c53;
+}
+
+.orden-detalles ul {
+    list-style: none;
+    padding: 0;
+}
+
+.orden-detalles li {
+    background-color: #fff;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}

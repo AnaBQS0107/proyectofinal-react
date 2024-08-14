@@ -1,0 +1,210 @@
+/* ObtenerProductos.css */
+
+.productos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+
+.h3-Nombre {
+  text-align: center !important;
+  color: #000000 !important;
+}
+div.header-image {
+  background-image: url('../img/boutique.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 400px; /* Ajusta según el diseño */
+  height: 250px; /* Ajusta según el diseño */
+  background-color: #FFD700; /* Dorado */
+  border-radius: 8px;
+  margin-left: 20px;
+  overflow: hidden;
+}
+
+div.header-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+div.header-section {
+  background-color: #000000; /* Negro */
+  padding: 40px;
+  border-radius: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+ 
+}
+
+div.header-content {
+  flex: 1;
+}
+
+div.header-content h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.search-bar {
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.category-nav {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.category-nav button {
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  white-space: nowrap;
+}
+
+.productos-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tres tarjetas por fila */
+  gap: 20px;
+}
+
+.producto-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Asegura que el contenido se apile verticalmente */
+    height: 100%; /* Asegura que el item se expanda para ocupar el espacio disponible */
+  }
+
+  
+.producto-item:hover {
+  transform: translateY(-5px);
+}
+
+.producto-imagen {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+h3-nombre {
+  font-size: 18px;
+  margin: 10px 15px;
+  color: #333;
+}
+
+p {
+  font-size: 16px;
+  margin: 0 15px 10px;
+  color: #666;
+}
+
+.p-button-carrito {
+  display: block;
+  width: calc(100% - 30px);
+  margin: 0 15px 15px;
+  background-color: #d19056; /* Dorado oscuro */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.p-button-carrito:hover {
+  background-color: #b27a48; /* Dorado aún más oscuro para el efecto hover */
+}
+
+h1 {
+  color: #fff !important;
+  text-align: center;
+  margin-bottom: 30px !important;
+}
+
+/* Media Queries para hacer el diseño responsive */
+
+@media (max-width: 768px) {
+  .header-image {
+    width: 300px;
+    height: 200px;
+  }
+
+  .header-section {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .header-content h1 {
+    font-size: 20px;
+  }
+
+  .search-bar {
+    max-width: 100%;
+  }
+
+  .productos-list {
+    grid-template-columns: repeat(2, 1fr); /* Dos tarjetas por fila */
+  }
+}
+
+@media (max-width: 480px) {
+  .header-image {
+    width: 100%;
+    height: 150px;
+  }
+
+  .header-section {
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .header-content h1 {
+    font-size: 18px;
+  }
+
+  .search-bar {
+    max-width: 100%;
+  }
+
+  .productos-list {
+    grid-template-columns: 1fr; /* Una tarjeta por fila */
+  }
+}
+
+h2{
+    text-align: center;
+}
+
+
+.producto-imagen {
+    width: 100%;
+    height: 330px; /* Ajusta la altura según tus necesidades */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin estirarse */
+    display: block; /* Asegura que la imagen se comporte como un bloque */
+  }
+  

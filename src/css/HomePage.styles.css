@@ -1,0 +1,128 @@
+
+body {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.p-info{
+  color: #fff;
+}
+.p-menubar {
+  background-color: #2d2d2d;
+  border: none;
+}
+
+h3{
+  color: #fff !important;
+}
+.p-menubar .p-menuitem-link {
+  color: #f4f4f4;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.p-menubar .p-menuitem-link:hover {
+  color: #d69b67;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-image: url('../img/Fondo.png');
+  background-size: cover; 
+  background-position: center;
+}
+
+
+.hero-content {
+  text-align: center;
+  color: #000000;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.p-button-danger {
+  background-color: #d69b67;
+  border-color: #d69b67;
+  color: #f4f4f4;
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.p-button-danger:hover {
+  background-color: #d69b67;
+  border-color: #d69b67;
+}
+
+.mission-vision, .info-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1c1c;
+  padding: 4rem 2rem;
+  flex-wrap: wrap;
+}
+
+.mission, .vision, .info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #f4f4f4;
+  margin: 1rem;
+  flex: 1;
+  max-width: 700px;
+}
+
+.mission i, .vision i, .info-item i {
+  font-size: 3rem;
+  color: #d69b67;
+  margin-bottom: 1rem;
+}
+
+.mission h2, .vision h2, .info-item h3 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.mission p, .vision p, .info-item p {
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+
+@media (max-width: 768px) {
+  .mission-vision, .info-section {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+
+  .mission, .vision, .info-item {
+    margin: 1rem 0;
+    max-width: 100%;
+  }
+
+  .mission i, .vision i, .info-item i {
+    font-size: 2.5rem;
+  }
+
+  .mission h2, .vision h2, .info-item h3 {
+    font-size: 1.5rem;
+  }
+
+  .mission p, .vision p, .info-item p {
+    font-size: 1rem;
+  }
+}
