@@ -12,7 +12,11 @@ import MostrarProductos from './paginas/ObtenerProductos';
 import ControlI from './paginas/ControlInventario';
 import MantenimientoP from './paginas/MantenimientoProductos';
 import MantenimientoE from './paginas/MantenimientoEmpleados';
-import Footer from './componentes/footer';
+
+import Detalles from './paginas/DetalleProducto';
+import Ordenes from './paginas/Ordenes';
+import Carrito from './paginas/Carrito';
+import Checkout from './paginas/Checkout';
 
 
 
@@ -25,7 +29,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Inicio />} />
-          <Route path="/productos" element={<MostrarProductos />} />  
+          <Route path="/productos" element={<MostrarProductos />} />
+          <Route path="/productos/:ProductoID" element={<Detalles />} />
+          <Route path="/carrito" element={<Carrito />} />
+          <Route path="/checkout" element={<Checkout />} />
+ 
           {!isAuthenticated ? (
             <>
               <Route path="/login" element={<LoginSesion />} />
@@ -36,6 +44,7 @@ function App() {
               {userRole === 'cliente' && (
                 <>
                   <Route path="/RegistroC" element={<RegistroClientes />} />
+                  <Route path="Ordenes" element={<Ordenes />} />
                 </>
               )}
               {userRole === 'empleado' && (
@@ -53,7 +62,6 @@ function App() {
           )}
           <Route path="/login" element={<LoginSesion />} />
         </Routes>
-        <Footer />
       </div>
     </Router>
   );
