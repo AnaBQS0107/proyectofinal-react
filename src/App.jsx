@@ -8,6 +8,7 @@ import RegistroPedidos from './paginas/RegistroPedido';
 import MantenimientoC from './paginas/MantenimientoClientes'
 import LoginSesion from './paginas/LoginSesion';
 import Navbar from './componentes/navbar';
+import footer from './componentes/footer';
 import MostrarProductos from './paginas/ObtenerProductos';
 import ControlI from './paginas/ControlInventario';
 import MantenimientoP from './paginas/MantenimientoProductos';
