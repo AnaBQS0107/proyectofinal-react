@@ -37,12 +37,12 @@ const MantenimientoE = () => {
         <React.Fragment>
             <Button 
                 icon="pi pi-pencil" 
-                className=" p-button-success p-mr-2" 
+                className=" p-button-editar" 
                 onClick={() => editEmployee(rowData)} 
             />
             <Button 
                 icon="pi pi-trash" 
-                className=" p-button-danger" 
+                className=" p-button-eliminar" 
                 onClick={() => deleteEmployee(rowData.Persona_idCedula)} 
             />
         </React.Fragment>

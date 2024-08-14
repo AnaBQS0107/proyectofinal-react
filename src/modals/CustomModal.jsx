@@ -17,11 +17,11 @@ const CustomModal = ({ isVisible, onClose, product }) => {
         return (
             <div className="product-details">
                 <h2>{product.Nombre}</h2>
-                <p><strong>Código:</strong> {product.idProducto}</p>
+                <p><strong>Código:</strong> {product.ProductoID}</p>
                 <p><strong>Cantidad en inventario:</strong> {product.Stock}</p>
                 <p><strong>Costo del producto:</strong> {formatCurrency(product.Precio)}</p>
                 <p><strong>Costo con IVA:</strong> {formatCurrency(product.PrecioIVA)}</p>
-                <p><strong>Ubicación en la bodega:</strong> Estante {product.CatalogoEstantes_idCatalogoEstantes}</p>
+                <p><strong>Ubicación en la bodega:</strong> Estante {product.CatalogoEstantesID}</p>
                 <img src={obtenerRutaImagen(product.Imagen)} alt={product.Nombre} className="product-image" />
             </div>
         );

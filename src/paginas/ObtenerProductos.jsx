@@ -51,6 +51,7 @@ function MostrarProductos() {
 
     return (
         <>
+          <br /><br /><br /> 
             <div className="productos-container">
                 <div className="header-section">
                     <div className="header-content">
@@ -81,14 +82,15 @@ function MostrarProductos() {
                                     className="producto-imagen" 
                                     onClick={() => verDetallesProducto(producto.i)}  
                                 />
-                                <h3>{producto.Nombre}</h3>
+                     <h3 class="h3-Nombre">{producto.Nombre}</h3>
+
                                 <p>Precio: {formatCurrency(producto.Precio)}</p>
                                 <p>Precio con IVA: {formatCurrency(producto.PrecioIVA)}</p>
                                 <p>Cantidad disponible: {producto.Stock}</p>
                                 <Button 
                                     label="Ver Más Detalles" 
                                     onClick={() => redirigirADetalles(producto.ProductoID)} 
-                                    className="p-button-info"
+                                    className="p-button-detalles"
                                     style={{ marginTop: '10px' }} 
                                 />
                             </div>

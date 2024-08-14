@@ -3,7 +3,7 @@
 .productos-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 45px;
   font-family: Arial, sans-serif;
 }
 
@@ -123,6 +123,16 @@ p {
   color: #666;
 }
 
+.p-button-detalles{
+  background-color: #d19056; 
+  border-color: #bd7d44;
+}
+
+
+.p-button-detalles:hover{
+  background-color: #b27a48;
+  border-color: #bd7d44;
+}
 .p-button-carrito {
   display: block;
   width: calc(100% - 30px);

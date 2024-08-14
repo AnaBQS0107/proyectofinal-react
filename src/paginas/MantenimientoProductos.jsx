@@ -35,12 +35,12 @@ const MantenimientoP = () => {
         <React.Fragment>
             <Button 
                 icon="pi pi-pencil" 
-                className=" p-button-success p-mr-2" 
+                className=" p-button-editar" 
                 onClick={() => editProduct(rowData)} 
             />
             <Button 
                 icon="pi pi-trash" 
-                className=" p-button-danger" 
+                className=" p-button-eliminar" 
                 onClick={() => deleteProduct(rowData.idProducto)} 
             />
         </React.Fragment>
@@ -75,7 +75,7 @@ const MantenimientoP = () => {
                 <Column field="Stock" header="Stock" />
                 <Column field="Precio" header="Precio" />
                 <Column field="PrecioIVA" header="Precio con IVA" />
-                <Column field="CatalogoEstantes_idCatalogoEstantes" header="Estante" />
+                <Column field="CatalogoEstantesID" header="Estante" />
                 <Column body={actionBodyTemplate} exportable={false} style={{ minWidth: '8rem' }} />
             </DataTable>
 

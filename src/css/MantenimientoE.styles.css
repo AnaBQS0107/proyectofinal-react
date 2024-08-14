@@ -35,25 +35,30 @@
     border-radius: 50%;
 }
 
-.p-button.p-button-success {
+.p-button-editar{
     background: #679b7a;
     border-color: #6ca07f;
 }
 
-.p-button.p-button-success:hover {
+.p-button-eliminar{
+    background: #e74c3c;
+    border-color: #f59e0b;
+}
+
+.p-button-editar:hover{
     background: #60b37e;
     border-color: #16a34a;
 }
 
-.p-button.p-button-warning {
-    background: #f59e0b;
-    border-color: #f59e0b;
-}
 
-.p-button.p-button-warning:hover {
-    background: #d97706;
+.p-button-eliminar:hover{
+    background: #bc3020;
     border-color: #d97706;
 }
+
+
+
+
 /* Estilos para pantallas pequeñas */
 @media screen and (max-width: 600px) {
     .crud-table-container {
