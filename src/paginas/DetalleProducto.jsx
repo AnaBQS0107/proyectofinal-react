@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from 'primereact/button';
-import { obtenerProductoPorId } from '../api/producto.api';
+import { obtenerProductoPorId } from '../api/producto.api';  // Importa obtenerProductoPorId desde la API de productos
+import { agregarProductoACarrito } from '../api/ordenes.api';  // Asegúrate de importar el método correcto.
 import '../css/DetalleProducto.css';
-import { crearOrden, agregarProductoACarrito} from '../api/ordenes.api';
 
 function DetalleProducto() {
-    const { idProducto } = useParams();
+    const { ProductoID } = useParams();
     const [producto, setProducto] = useState(null);
     const [cantidad, setCantidad] = useState(1);
     const navigate = useNavigate(); 
 
     useEffect(() => {
         const fetchProducto = async () => {
+            console.log("ProductoID:", ProductoID);
+            if (!ProductoID) {
+                console.error("ProductoID no está definido");
+                return;
+            }
             try {
-                const productoData = await obtenerProductoPorId(idProducto);
+                const productoData = await obtenerProductoPorId(ProductoID);
                 if (productoData) {
                     setProducto(productoData);
                 } else {
@@ -26,14 +31,16 @@ function DetalleProducto() {
         };
 
         fetchProducto();
-    }, [idProducto]);
+    }, [ProductoID]);
 
     const obtenerClienteId = () => {
-        const clienteId = localStorage.getItem('ClienteId');
-        if (!clienteId) {
+        const ClientesID = localStorage.getItem('ClientesID');
+        if (!ClientesID) {
             console.warn('No se encontró clienteId en localStorage. Redireccionando a login.');
+            navigate('/login');
+            return null;
         }
-        return clienteId || null;
+        return ClientesID;
     };
 
     const aumentarCantidad = () => {
@@ -50,25 +57,11 @@ function DetalleProducto() {
 
     const manejarAgregarAlCarrito = async () => {
         try {
-            const clienteId = obtenerClienteId();
+            const ClientesID = obtenerClienteId();
+            if (!ClientesID) return;
 
-            if (!clienteId) {
-                // If not authenticated, redirect to login
-                navigate('/login');
-                return;
-            }
-
-            let idOrdenCliente = localStorage.getItem('idOrdenCliente');
-
-            if (!idOrdenCliente) {
-                idOrdenCliente = await crearOrden(clienteId);
-                localStorage.setItem('idOrdenCliente', idOrdenCliente);
-            }
-
-            await agregarProductoACarrito(clienteId, producto.idProducto, cantidad);
+            await agregarProductoACarrito(ClientesID, producto.ProductoID, cantidad);
             alert(`${producto.Nombre} se agregó al carrito con una cantidad de ${cantidad}`);
-            
-            // Redirect to the cart or orders page
             navigate('/carrito');
         } catch (error) {
             console.error('Error al agregar producto al carrito:', error);

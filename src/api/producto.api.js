@@ -32,25 +32,19 @@ export const insertarProducto = async (ProductoNuevo) => {
   }
 };
 
-export const actualizarProducto = async (idProducto, productoActualizado) => {
+export const actualizarProducto = async (ProductoID, productoActualizado) => {
   try {
-    const {
-      Nombre,
-      Imagen,
-      Stock,
-      Precio,
-      PrecioIVA,
-      CatalogoEstantes_idCatalogoEstantes,
-    } = productoActualizado;
+    const { Nombre, Imagen, Stock, Precio, PrecioIVA, CatalogoEstantesID } =
+      productoActualizado;
     const response = await axios.put(
-      `${BASE_URL}/editarProducto/${idProducto}`,
+      `${BASE_URL}/editarProducto/${ProductoID}`,
       {
         nombre: Nombre,
         imagen: Imagen,
         stock: Stock,
         precio: Precio,
         precioIVA: PrecioIVA,
-        catalogoEstantesId: CatalogoEstantes_idCatalogoEstantes,
+        catalogoEstantesId: CatalogoEstantesID,
       }
     );
     return response.data;
@@ -63,10 +57,10 @@ export const actualizarProducto = async (idProducto, productoActualizado) => {
   }
 };
 
-export const obtenerProductoPorId = async (idProducto) => {
+export const obtenerProductoPorId = async (ProductoID) => {
   try {
     const response = await axios.get(
-      `http://localhost:4000/obtenerProductoPorId/${idProducto}`
+      `http://localhost:4000/obtenerProductoPorId/${ProductoID}`
     );
     return response.data;
   } catch (error) {
@@ -85,9 +79,9 @@ export const ObtenerProductos = async () => {
   }
 };
 
-export const EliminarProducto = async (idProducto) => {
+export const EliminarProducto = async (ProductoID) => {
   try {
-    await axios.delete(`http://localhost:4000/eliminarProductos/${idProducto}`);
+    await axios.delete(`http://localhost:4000/eliminarProductos/${ProductoID}`);
   } catch (error) {
     console.error("Error al eliminar el producto:", error);
     throw error;

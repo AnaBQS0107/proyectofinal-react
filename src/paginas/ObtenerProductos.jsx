@@ -34,8 +34,8 @@ function MostrarProductos() {
         setVisible(true);  // Show the modal
     };
 
-    const redirigirADetalles = (idProducto) => {
-        navigate(`/productos/${idProducto}`);
+    const redirigirADetalles = (ProductoID) => {
+        navigate(`/productos/${ProductoID}`);
     };
 
     const formatCurrency = (value) => {
@@ -72,7 +72,7 @@ function MostrarProductos() {
                     {productosFiltrados.length > 0 ? (
                         productosFiltrados.map((producto) => (
                             <div 
-                                key={producto.idProducto} 
+                                key={producto.ProductoID} 
                                 className="producto-item"
                             >
                                 <img 
@@ -87,7 +87,7 @@ function MostrarProductos() {
                                 <p>Cantidad disponible: {producto.Stock}</p>
                                 <Button 
                                     label="Ver Más Detalles" 
-                                    onClick={() => redirigirADetalles(producto.idProducto)} 
+                                    onClick={() => redirigirADetalles(producto.ProductoID)} 
                                     className="p-button-info"
                                     style={{ marginTop: '10px' }} 
                                 />

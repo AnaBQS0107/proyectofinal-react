@@ -23,7 +23,9 @@ function LoginForm() {
       console.log('Respuesta del login:', response);
 
       if (response.data && (response.data.rol === 'cliente' || response.data.rol === 'empleado')) {
-        localStorage.setItem('ClienteId', response.data.ClienteId);
+        const ClienteID = response.data.ClienteID; // Correctly retrieve clienteID
+        localStorage.setItem('ClientesID', ClienteID); // Store it in localStorage
+        console.log("ClienteId guardado:" + ClienteID);
         login(response.data.rol);
         navigate('/'); 
       } else {
