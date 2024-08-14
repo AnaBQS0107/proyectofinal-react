@@ -7,6 +7,11 @@
   font-family: Arial, sans-serif;
 }
 
+
+.h3-Nombre {
+  text-align: center !important;
+  color: #000000 !important;
+}
 div.header-image {
   background-image: url('../img/boutique.jpg');
   background-size: cover;
@@ -33,6 +38,7 @@ div.header-section {
   margin-bottom: 30px;
   display: flex;
   align-items: center;
+ 
 }
 
 div.header-content {
@@ -79,21 +85,22 @@ div.header-content h1 {
 
 .productos-list {
   display: grid;
-  grid-template-columns: 1fr; /* Una tarjeta por fila */
+  grid-template-columns: repeat(3, 1fr); /* Tres tarjetas por fila */
   gap: 20px;
 }
 
 .producto-item {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column; /* Asegura que el contenido se apile verticalmente */
-  height: 100%; /* Asegura que el item se expanda para ocupar el espacio disponible */
-}
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Asegura que el contenido se apile verticalmente */
+    height: 100%; /* Asegura que el item se expanda para ocupar el espacio disponible */
+  }
 
+  
 .producto-item:hover {
   transform: translateY(-5px);
 }
@@ -161,7 +168,7 @@ h1 {
   }
 
   .productos-list {
-    grid-template-columns: 1fr; /* Una tarjeta por fila */
+    grid-template-columns: repeat(2, 1fr); /* Dos tarjetas por fila */
   }
 }
 
@@ -189,30 +196,15 @@ h1 {
   }
 }
 
-h2 {
-  text-align: center;
+h2{
+    text-align: center;
 }
+
 
 .producto-imagen {
-  width: 100%;
-  height: 330px; 
-  object-fit: cover; 
-  display: block; 
-}
-.image-dialog .p-dialog-content {
-  padding: 0;
-  overflow: visible;
-}
-
-.image-container {
-  position: relative;
-}
-
-.full-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 150%; 
-  height: auto;
-  z-index: 1000; 
-}
+    width: 100%;
+    height: 330px; /* Ajusta la altura según tus necesidades */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin estirarse */
+    display: block; /* Asegura que la imagen se comporte como un bloque */
+  }
+  
