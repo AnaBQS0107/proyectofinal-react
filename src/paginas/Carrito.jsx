@@ -58,6 +58,7 @@ const Carrito = () => {
 
         // Cambiar el estado de la orden a "Checkout"
         await cambiarEstadoACheckout(OrdenClienteID);
+        console.log(OrdenClienteID);
 
         // Redirigir a la página de pago
         navigate('/checkout');

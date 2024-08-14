@@ -1,26 +1,27 @@
+// components/Ordenes.js
+
 import React, { useState, useEffect } from 'react';
 import { obtenerOrdenesCompletadas } from '../api/ordenes.api';
-import { Button } from 'primereact/button';
 import '../css/Ordenes.css';
 
 const Ordenes = () => {
     const [ordenesCompletadas, setOrdenesCompletadas] = useState([]);
-    const clienteId = localStorage.getItem('clienteId') || '';
+    const ClientesID = localStorage.getItem('ClientesID');
 
     useEffect(() => {
         const fetchOrdenesCompletadas = async () => {
             try {
-                const ordenesData = await obtenerOrdenesCompletadas(clienteId);
+                const ordenesData = await obtenerOrdenesCompletadas(ClientesID);
                 setOrdenesCompletadas(ordenesData);
             } catch (error) {
                 console.error('Error al obtener las órdenes completadas:', error);
             }
         };
 
-        if (clienteId) {
+        if (ClientesID) {
             fetchOrdenesCompletadas();
         }
-    }, [clienteId]);
+    }, [ClientesID]);
 
     return (
         <div className="ordenes-container">
@@ -28,16 +29,24 @@ const Ordenes = () => {
             {ordenesCompletadas.length === 0 ? (
                 <div>No tienes órdenes completadas.</div>
             ) : (
-                <ul>
-                    {ordenesCompletadas.map((orden) => (
-                        <li key={orden.idOrdenCliente}>
-                            Orden ID: {orden.idOrdenCliente} - Fecha: {new Date(orden.Fecha).toLocaleDateString()}
-                        </li>
-                    ))}
-                </ul>
+                ordenesCompletadas.map((orden) => (
+                    <div key={orden.OrdenClienteID} className="orden-card">
+                        <h3>Orden ID: {orden.OrdenClienteID}</h3>
+                        <p>Fecha: {new Date(orden.Fecha).toLocaleDateString()}</p>
+                        <p>Total: {formatCurrency(orden.Total)}</p>
+                        {/* Add more details as needed */}
+                    </div>
+                ))
             )}
         </div>
     );
+};
+
+const formatCurrency = (value) => {
+    return new Intl.NumberFormat('es-CR', {
+        style: 'currency',
+        currency: 'CRC'
+    }).format(value);
 };
 
 export default Ordenes;

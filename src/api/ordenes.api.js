@@ -84,7 +84,18 @@ export const cambiarEstadoACheckout = async (OrdenClienteID) => {
     throw error;
   }
 };
-
+// Complete an order (change status to "Completada" and reduce stock)
+export const cambiarEstadoACompletada = async (OrdenClienteID) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/completarOrden`, {
+      OrdenClienteID,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error al completar la orden:", error);
+    throw error;
+  }
+};
 // Cambiar el estado de una orden a "En Proceso"
 export const cambiarEstadoAEnProceso = async (OrdenClienteID) => {
   try {

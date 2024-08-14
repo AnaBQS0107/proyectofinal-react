@@ -1,19 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { obtenerOrdenesCheckout } from '../api/ordenes.api'; // Importar la función para obtener órdenes en checkout
 import logo from '../img/LogoFooter.png';
 import '../css/Navbar.css';
 
 function Navbar() {
   const [visible, setVisible] = useState(false);
+  const [hayOrdenCheckout, setHayOrdenCheckout] = useState(false); // Estado para manejar si hay una orden en checkout
   const navigate = useNavigate();
   const { userRole, isAuthenticated, logout } = useAuth();
+  const ClientesID = localStorage.getItem('ClientesID');
+
+  useEffect(() => {
+    const verificarOrdenCheckout = async () => {
+      if (ClientesID) {
+        try {
+          const ordenesCheckout = await obtenerOrdenesCheckout(ClientesID);
+          setHayOrdenCheckout(ordenesCheckout.length > 0);
+        } catch (error) {
+          console.error('Error al verificar órdenes en checkout:', error);
+        }
+      }
+    };
+
+    verificarOrdenCheckout();
+  }, [ClientesID]);
 
   const handleLogout = () => {
-    logout(); 
-    navigate('/'); 
+    logout();
+    navigate('/');
   };
 
   return (
@@ -24,18 +42,17 @@ function Navbar() {
         className="p-button-text p-button-plain navbar-toggle"
         style={{ fontSize: '2em' }}
       />
-      <img 
-        src={logo} 
-        alt="Logo" 
+      <img
+        src={logo}
+        alt="Logo"
         className="navbar-logo"
         style={{ height: '60px', marginLeft: '18px' }}
       />
-      <Button 
-       
-        icon="pi pi-shopping-cart" 
-        className="navbar-cart" 
+      <Button
+        icon="pi pi-shopping-cart"
+        className="navbar-cart"
         onClick={() => {
-          navigate('/carrito'); 
+          navigate('/carrito');
         }}
       />
 
@@ -87,16 +104,30 @@ function Navbar() {
           ) : (
             <>
               {userRole === 'cliente' && (
-                <Button
-                  label="Órdenes"
-                  icon="pi pi-list"
-                  onClick={() => {
-                    navigate('/ordenes');
-                    setVisible(false);
-                  }}
-                  className="p-button-text navbar-menu-item"
-                  style={{ width: '100%', marginTop: '10px' }}
-                />
+                <>
+                  <Button
+                    label="Órdenes"
+                    icon="pi pi-list"
+                    onClick={() => {
+                      navigate('/ordenes');
+                      setVisible(false);
+                    }}
+                    className="p-button-text navbar-menu-item"
+                    style={{ width: '100%', marginTop: '10px' }}
+                  />
+                  {hayOrdenCheckout && (
+                    <Button
+                      label="Checkout"
+                      icon="pi pi-credit-card"
+                      onClick={() => {
+                        navigate('/checkout');
+                        setVisible(false);
+                      }}
+                      className="p-button-text navbar-menu-item"
+                      style={{ width: '100%', marginTop: '10px' }}
+                    />
+                  )}
+                </>
               )}
               {userRole === 'empleado' && (
                 <>
@@ -110,7 +141,7 @@ function Navbar() {
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
-                         <Button
+                  <Button
                     label="Ingresar Productos"
                     icon="pi pi-plus"
                     onClick={() => {
@@ -120,8 +151,6 @@ function Navbar() {
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
-                 
-            
                   <Button
                     label="Mantenimiento Empleados"
                     icon="pi pi-user-edit"
@@ -132,7 +161,7 @@ function Navbar() {
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
-                   <Button
+                  <Button
                     label="Mantenimiento Clientes"
                     icon="pi pi-user-edit"
                     onClick={() => {
@@ -152,7 +181,7 @@ function Navbar() {
                     className="p-button-text navbar-menu-item"
                     style={{ width: '100%', marginTop: '10px' }}
                   />
-                        <Button
+                  <Button
                     label="Control de Inventario"
                     icon="pi pi-box"
                     onClick={() => {
@@ -171,7 +200,6 @@ function Navbar() {
                 className="p-button-text navbar-menu-item"
                 style={{ width: '100%', marginTop: '10px' }}
               />
-              
             </>
           )}
         </div>
