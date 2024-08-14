@@ -1,11 +1,12 @@
-// components/Ordenes.js
-
 import React, { useState, useEffect } from 'react';
 import { obtenerOrdenesCompletadas } from '../api/ordenes.api';
+import { Button } from 'primereact/button';
+
 import '../css/Ordenes.css';
 
 const Ordenes = () => {
     const [ordenesCompletadas, setOrdenesCompletadas] = useState([]);
+    const [ordenesDesplegadas, setOrdenesDesplegadas] = useState({});
     const ClientesID = localStorage.getItem('ClientesID');
 
     useEffect(() => {
@@ -23,6 +24,13 @@ const Ordenes = () => {
         }
     }, [ClientesID]);
 
+    const toggleDetalleOrden = (ordenId) => {
+        setOrdenesDesplegadas(prevState => ({
+            ...prevState,
+            [ordenId]: !prevState[ordenId]
+        }));
+    };
+
     return (
         <div className="ordenes-container">
             <h1>Órdenes Completadas</h1>
@@ -32,9 +40,22 @@ const Ordenes = () => {
                 ordenesCompletadas.map((orden) => (
                     <div key={orden.OrdenClienteID} className="orden-card">
                         <h3>Orden ID: {orden.OrdenClienteID}</h3>
+                        <p>Cliente: {orden.NombreCliente}</p>
                         <p>Fecha: {new Date(orden.Fecha).toLocaleDateString()}</p>
-                        <p>Total: {formatCurrency(orden.Total)}</p>
-                        {/* Add more details as needed */}
+                        <p>Total: {formatCurrency(orden.TotalOrden)}</p>
+                        <Button 
+                            label={ordenesDesplegadas[orden.OrdenClienteID] ? "Ocultar Productos" : "Mostrar Productos"} 
+                            onClick={() => toggleDetalleOrden(orden.OrdenClienteID)} 
+                            className="p-button-text"
+                        />
+                        {ordenesDesplegadas[orden.OrdenClienteID] && (
+                            <ul className="detalle-orden">
+                                <li>
+                                    <img src={`http://localhost:4001/uploads/${orden.Imagen}`} alt={orden.NombreProducto} style={{ width: '100px', marginRight: '10px' }} />
+                                    {orden.NombreProducto} - Cantidad: {orden.Cantidad} - Subtotal: {formatCurrency(orden.Subtotal)}
+                                </li>
+                            </ul>
+                        )}
                     </div>
                 ))
             )}
