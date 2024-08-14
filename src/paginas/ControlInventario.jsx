@@ -6,7 +6,7 @@ import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import '../css/ControlInventario.css';
 
-import { ObtenerProductos,obtenerRutaImagen } from '../api/producto.api';
+import { ObtenerProductos } from '../api/producto.api';
 
 
 function ControlInventarios() {
@@ -39,7 +39,21 @@ function ControlInventarios() {
         setProductoSeleccionado(producto);
         setMostrarDialogo(true);
     };
-
+    const CustomModal = ({ isVisible, onClose, product }) => {
+        return (
+            <Dialog visible={isVisible} onHide={onClose} header="Detalles del Producto">
+                <div>
+                    <h2>{product.Nombre}</h2>
+                    <img src={obtenerRutaImagen(product.Imagen)} alt={product.Nombre} style={{ width: '100%' }} />
+                    <p>Precio: {formatCurrency(product.Precio)}</p>
+                    <p>Precio con IVA: {formatCurrency(product.PrecioIVA)}</p>
+                    <p>Stock disponible: {product.Stock}</p>
+                    <p>Ubicación: Estante {product.CatalogoEstantes_idCatalogoEstantes}</p>
+                </div>
+            </Dialog>
+        );
+    };
+    
     const imagenBodyTemplate = (rowData) => (
         <Button 
             label="" 
