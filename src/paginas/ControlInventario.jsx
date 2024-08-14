@@ -39,6 +39,22 @@ function ControlInventarios() {
         setProductoSeleccionado(producto);
         setMostrarDialogo(true);
     };
+
+    const imagenBodyTemplate = (rowData) => (
+        <Button 
+            label="" 
+            icon="pi pi-info-circle" 
+            onClick={() => mostrarDetallesProducto(rowData)} 
+        />
+    );
+
+    const costoBodyTemplate = (rowData) => formatCurrency(rowData.Precio);
+
+    const costoIVA_bodyTemplate = (rowData) => formatCurrency(rowData.PrecioIVA);
+
+    const estanteBodyTemplate = (rowData) => `Estante ${rowData.CatalogoEstantesID}`;
+
+    const codigoBodyTemplate = (rowData) => rowData.ProductoID;
     const CustomModal = ({ isVisible, onClose, product }) => {
         return (
             <Dialog visible={isVisible} onHide={onClose} header="Detalles del Producto">
@@ -54,22 +70,6 @@ function ControlInventarios() {
         );
     };
     
-    const imagenBodyTemplate = (rowData) => (
-        <Button 
-            label="" 
-            icon="pi pi-info-circle" 
-            onClick={() => mostrarDetallesProducto(rowData)} 
-        />
-    );
-
-    const costoBodyTemplate = (rowData) => formatCurrency(rowData.Precio);
-
-    const costoIVA_bodyTemplate = (rowData) => formatCurrency(rowData.PrecioIVA);
-
-    const estanteBodyTemplate = (rowData) => `Estante ${rowData.CatalogoEstantes_idCatalogoEstantes}`;
-
-    const codigoBodyTemplate = (rowData) => rowData.idProducto;
-
     return (
         <div className="control-inventarios">
             <br /><br /><br /> <br /> <br />
