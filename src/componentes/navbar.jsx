@@ -40,7 +40,6 @@ function Navbar() {
         icon="pi pi-bars"
         onClick={() => setVisible(true)}
         className="p-button-hamburguesa"
-  
       />
       <img
         src={logo}
@@ -48,13 +47,15 @@ function Navbar() {
         className="navbar-logo"
         style={{ height: '60px', marginLeft: '18px' }}
       />
-      <Button
-        icon="pi pi-shopping-cart"
-        className="navbar-cart"
-        onClick={() => {
-          navigate('/carrito');
-        }}
-      />
+      {userRole === 'cliente' && (
+        <Button
+          icon="pi pi-shopping-cart"
+          className="navbar-cart"
+          onClick={() => {
+            navigate('/carrito');
+          }}
+        />
+      )}
 
       <Sidebar visible={visible} onHide={() => setVisible(false)} className="navbar-sidebar">
         <div className="navbar-menu">
@@ -209,3 +210,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
