@@ -105,24 +105,24 @@ const Checkout = () => {
                 <h3>Total a pagar: {formatCurrency(calcularTotalConIVA(calcularSubtotal(orden), calcularIVA(calcularSubtotal(orden))))}</h3>
             </div>
 
-            <div className="checkout-buttons">
+            <div className="button-container">
                 <Button 
                     label="Confirmar Pago" 
                     icon="pi pi-credit-card" 
-                    className="p-button-success" 
+                    className="p-button-confirmar" 
                     onClick={handleConfirmarPago} 
                 />
                 <Button 
                     label="Modificar Orden" 
                     icon="pi pi-pencil" 
-                    className="p-button-warning" 
+                    className="p-button-modificar" 
                     onClick={handleModificarOrden} 
                     style={{ marginLeft: '10px' }}
                 />
                 <Button 
                     label="Cancelar Orden" 
                     icon="pi pi-times" 
-                    className="p-button-danger" 
+                    className="p-button-cancelar" 
                     onClick={handleCancelarOrden} 
                     style={{ marginLeft: '10px' }}
                 />

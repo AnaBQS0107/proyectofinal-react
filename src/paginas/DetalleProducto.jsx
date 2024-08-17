@@ -96,7 +96,7 @@ function DetalleProducto() {
                     <Button icon="pi pi-plus" onClick={aumentarCantidad} className="p-button-rounded p-button-text" />
                 </div>
             </div>
-            <Button label="Agregar al Carrito" onClick={manejarAgregarAlCarrito} className="p-button-success" />
+            <Button label="Agregar al Carrito" onClick={manejarAgregarAlCarrito} className="p-button-detalleC" />
         </div>
     );
 }

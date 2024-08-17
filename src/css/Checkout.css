@@ -1,6 +1,6 @@
 .checkout-container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 140px auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
@@ -46,9 +46,63 @@
     color: #333;
 }
 
-.p-button-success {
-    display: block;
-    margin: 20px auto;
-    font-size: 1.2rem;
+/* Contenedor para centrar los botones */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacio entre los botones */
+    margin-top: 20px; /* Espacio encima del grupo de botones */
+}
+
+.p-button-confirmar, 
+.p-button-modificar, 
+.p-button-cancelar {
     padding: 10px 20px;
+    font-size: 1rem;
+}
+
+.p-button-confirmar {
+    background: #679b7a;
+    border-color: #6ca07f;
+}
+
+.p-button-confirmar:hover {
+    background: #60b37e;
+    border-color: #16a34a;
+}
+
+.p-button-modificar {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+.p-button-modificar:hover {
+    background-color: #676060;
+    border-color: #000000;
+}
+
+.p-button-cancelar {
+    background: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.p-button-cancelar:hover {
+    background: #bc3020;
+    border-color: #d97706;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 600px) {
+    .button-container {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+        align-items: center; /* Centra los botones verticalmente */
+        gap: 10px; /* Espacio entre los botones en columna */
+    }
+
+    .p-button-confirmar, 
+    .p-button-modificar, 
+    .p-button-cancelar {
+        width: 100%; /* Asegura que los botones ocupen todo el ancho del contenedor */
+        text-align: center; /* Centra el texto en los botones */
+    }
 }
