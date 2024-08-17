@@ -133,7 +133,7 @@ const Carrito = () => {
                       <h3>Total: {formatCurrency(calcularTotalConIVA(calcularSubtotal(), calcularIVA(calcularSubtotal())))}</h3>
                   </div>
   
-                  <Button label="Proceder al pago" icon="pi pi-check" className="p-button-success" onClick={handleCheckout} />
+                  <Button label="Proceder al pago" icon="pi pi-check" className="p-button-pago" onClick={handleCheckout} />
 
               </>
           )}

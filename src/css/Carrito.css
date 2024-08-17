@@ -1,11 +1,52 @@
-/* Contenedor principal del carrito */
+/* Contenedor de los controles de cantidad */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrar horizontalmente los controles */
+    gap: 10px; /* Espacio entre los botones y el número */
+}
+
+/* Estilo para los botones de cantidad y eliminar */
+.quantity-controls .p-button-rounded {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p-button-pago{
+    background: #679b7a;
+    border-color: #6ca07f;
+}
+
+.p-button-pago:hover{
+    background: #60b37e;
+    border-color: #16a34a;
+}
+
+/* Asegurar que los detalles del carrito tengan suficiente espacio */
+.carrito-item-details p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* Asegurar que el contenedor del carrito ocupe el ancho máximo sin exceder */
 .carrito-container {
-    max-width: 280px;
+    max-width: 350px;
     margin: 180px auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center !important;
+}
+
+/* Evitar que las imágenes se salgan de su contenedor */
+.carrito-item img {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
 }
 
 /* Encabezado del carrito */
@@ -27,10 +68,11 @@
 .carrito-item {
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Distribuir los elementos equitativamente */
     margin-bottom: 15px;
     padding: 10px;
     border-bottom: 1px solid #ddd;
-    position: relative; /* Posición relativa para poder posicionar el botón de eliminación */
+    position: relative;
 }
 
 .carrito-item img {
@@ -44,13 +86,10 @@
     position: relative;
 }
 
-/* Botón de eliminación ("X") */
+/* Posicionar el botón de eliminar en el centro verticalmente */
 .carrito-item .p-button-danger {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(50%, -50%);
-    background-color: #ff4d4f;
+    background: #e74c3c;
+    border-color: #f59e0b;
     border: none;
     border-radius: 50%;
     padding: 5px 10px;
@@ -66,7 +105,8 @@
 }
 
 .carrito-item .p-button-danger:hover {
-    background-color: #ff7875;
+    background: #bc3020;
+    border-color: #d97706;
 }
 
 /* Botón de checkout */
@@ -84,6 +124,8 @@
     color: #888;
     margin-top: 40px;
 }
+
+/* Resumen del carrito */
 .carrito-summary {
     margin-top: 20px;
     padding: 10px;
