@@ -88,41 +88,41 @@ const Carrito = () => {
 
     return (
       <div className="carrito-container">
-          <h2>Tu Carrito</h2>
+          <h2>Carrito de compras</h2>
           {carrito.length === 0 ? (
               <div>Tu carrito está vacío.</div>
           ) : (
               <>
                   <ul className="carrito-list">
                       {carrito.map((item, index) => (
-                          <li key={index} className="carrito-item">
-                              <img 
-                                  src={`http://localhost:4001/uploads/${item.Imagen}`} 
-                                  alt={item.NombreProducto} 
-                                  style={{ width: '100px', marginRight: '10px' }} 
+                      <li key={index} className="carrito-item">
+                      <img 
+                          src={`http://localhost:4001/uploads/${item.Imagen}`} 
+                          alt={item.NombreProducto} 
+                          style={{ width: '100px', marginRight: '10px' }} 
+                      />
+                      <div className="carrito-item-details">
+                          <p>{item.NombreProducto} - Precio: {formatCurrency(item.Precio)}</p>
+                          <div className="quantity-controls">
+                              <Button 
+                                  icon="pi pi-minus" 
+                                  className="p-button-rounded p-button-text" 
+                                  onClick={() => handleActualizarCantidad(item.OrdenClienteID, item.ProductoID, item.Cantidad - 1)} 
                               />
-                              <div className="carrito-item-details">
-                                  {item.NombreProducto} - Precio: {formatCurrency(item.Precio)}
-                                  <div className="cantidad-control">
-                                      <Button 
-                                          icon="pi pi-minus" 
-                                          className="p-button-rounded p-button-text" 
-                                          onClick={() => handleActualizarCantidad(item.OrdenClienteID, item.ProductoID, item.Cantidad - 1)} 
-                                      />
-                                      <span>{item.Cantidad}</span>
-                                      <Button 
-                                          icon="pi pi-plus" 
-                                          className="p-button-rounded p-button-text" 
-                                          onClick={() => handleActualizarCantidad(item.OrdenClienteID, item.ProductoID, item.Cantidad + 1)} 
-                                      />
-                                  </div>
-                                  <Button 
-                                      icon="pi pi-times" 
-                                      className="p-button-danger p-button-rounded p-button-text" 
-                                      onClick={() => handleEliminarProducto(item.OrdenClienteID, item.ProductoID)} 
-                                  />
-                              </div>
-                          </li>
+                              <span>{item.Cantidad}</span>
+                              <Button 
+                                  icon="pi pi-plus" 
+                                  className="p-button-rounded p-button-text" 
+                                  onClick={() => handleActualizarCantidad(item.OrdenClienteID, item.ProductoID, item.Cantidad + 1)} 
+                              />
+                              <Button 
+                                  icon="pi pi-times" 
+                                  className="p-button-danger p-button-rounded p-button-text" 
+                                  onClick={() => handleEliminarProducto(item.OrdenClienteID, item.ProductoID)} 
+                              />
+                          </div>
+                      </div>
+                  </li>
                       ))}
                   </ul>
   

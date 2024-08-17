@@ -1,15 +1,16 @@
 .ordenes-container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 280px;
+    margin: 180px auto;
     padding: 2rem;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-h1 {
+.h1-Ordenes {
     text-align: center;
-    color: #2d2d2d;
+    color: #2d2d2d !important;
 }
 
 .form-section {

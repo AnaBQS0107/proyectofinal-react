@@ -33,7 +33,7 @@ const Ordenes = () => {
 
     return (
         <div className="ordenes-container">
-            <h1>Órdenes Completadas</h1>
+            <h1 class="h1-Ordenes">Órdenes Completadas</h1>
             {ordenesCompletadas.length === 0 ? (
                 <div>No tienes órdenes completadas.</div>
             ) : (
