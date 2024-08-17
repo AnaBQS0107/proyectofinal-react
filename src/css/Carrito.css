@@ -34,7 +34,7 @@
 /* Asegurar que el contenedor del carrito ocupe el ancho máximo sin exceder */
 .carrito-container {
     max-width: 350px;
-    margin: 180px auto;
+    margin: 190px auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
@@ -143,3 +143,5 @@
     margin-top: 10px;
     color: #333;
 }
+
+

@@ -39,8 +39,8 @@ function Navbar() {
       <Button
         icon="pi pi-bars"
         onClick={() => setVisible(true)}
-        className="p-button-text p-button-plain navbar-toggle"
-        style={{ fontSize: '2em' }}
+        className="p-button-hamburguesa"
+  
       />
       <img
         src={logo}

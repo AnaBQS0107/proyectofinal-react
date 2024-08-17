@@ -2,7 +2,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: #d69b67;
+    background-color: #D69B67;
     padding: 1rem;
     position: fixed;
     top: 0;
@@ -14,6 +14,22 @@
   .navbar-toggle {
     color: #000000;
   }
+
+  .p-button-hamburguesa{
+    color: #000000;
+    background-color: #d69b67;
+    font-size: 1.1rem;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.3s ease;
+    font-size: 4rem;
+    /*Aumentadoeltamañodelicono*/padding: 0.5em;
+    /*Añadidopaddingparahacerlomásclickable*/border: none;
+    -webkit-transition: background-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease;
+    -ms-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
+}
   
   .navbar-sidebar {
     background-color: #1c1c1c;
@@ -33,10 +49,36 @@
     text-align: left;
     transition: background-color 0.3s ease;
   }
+
+  .navbar-menu-item:hover{
+    color: #1c1c1c;
+  }
   
   .navbar-menu-item:hover {
     background-color: #2d2d2d;
   }
+
+/* Estilos para el ícono del carrito de compras */
+.navbar-cart .pi-shopping-cart {
+  font-size: 23px;
+  /*Tamañodelícono*/color: #333;
+  /*Colordelícono*/transition: color 0.3s;
+
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -ms-transition: color 0.3s;
+  -o-transition: color 0.3s;
+}
+
+.p-button-hamburguesa .pi-bars{
+    /*Tamañodelícono*/color: #333;
+  /*Colordelícono*/transition: color 0.3s;
+  font-size: 23px;
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -ms-transition: color 0.3s;
+  -o-transition: color 0.3s;
+}
 
   .navbar-cart {
     position: absolute;
@@ -44,14 +86,19 @@
     right: 20px;
     background-color: transparent;
     border: none;
-    font-size: 3em; /* Aumentado el tamaño del icono */
+    font-size: 4rem;/* Aumentado el tamaño del icono */
     padding: 0.5em;  /* Añadido padding para hacerlo más clickable */
     color: #000000;
     cursor: pointer;
+    
     z-index: 101; /* Para asegurarse de que esté por encima de otros elementos */
   }
   
   .navbar-cart:hover {
-    color: #d69b67; /* Cambia el color al pasar el ratón, opcional */
+    color: #ffffff; /* Cambia el color al pasar el ratón, opcional */
   }
 
+.pi-shopping-cart{
+  height: auto;
+  width: auto;
+}
