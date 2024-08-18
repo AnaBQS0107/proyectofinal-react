@@ -20,6 +20,7 @@ import Carrito from './paginas/Carrito';
 import Checkout from './paginas/Checkout';
 import { Button } from 'primereact/button'; // Ensure Button is imported here
 
+
 function App() {
   const { userRole, isAuthenticated } = useAuth();
 

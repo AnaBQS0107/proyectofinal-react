@@ -7,7 +7,7 @@ import {
     cambiarEstadoACompletada 
 } from '../api/ordenes.api';
 import { Button } from 'primereact/button';
-import { guardarTransaccion } from '../api/transaccion.api';
+import { guardarTransaccion } from '../api/transaccionPago.api';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import '../css/Checkout.css'; // Asegúrate de tener CSS para los estilos
 
@@ -16,6 +16,8 @@ const Checkout = () => {
     const [pagoCompletado, setPagoCompletado] = useState(false);
     const navigate = useNavigate();
     const ClientesID = localStorage.getItem('ClientesID');
+
+    const tasaCambio = 500; // Definir la tasa de cambio fija: 1 USD = 500 CRC
 
     useEffect(() => {
         const fetchOrdenCheckout = async () => {
@@ -33,6 +35,10 @@ const Checkout = () => {
             navigate('/login'); // Redirigir a login si no hay ClientesID
         }
     }, [ClientesID, navigate]);
+
+    const convertirColonesADolares = (montoCRC) => {
+        return montoCRC / tasaCambio; // Convertir el monto de colones a dólares
+    };
 
     const handleModificarOrden = async () => {
         if (orden && orden.length > 0) {
@@ -60,7 +66,7 @@ const Checkout = () => {
         if (orden && orden.length > 0) {
             try {
                 const transaccionData = {
-                    ClientesID: clienteInfo.ClientesID,
+                    ClientesID: clienteInfo.ClientesID || ClientesID,  // Verificar que ClientesID no sea nulo
                     OrdenID: orden[0].OrdenClienteID,
                     TransaccionPayPalID: detalleTransaccion.id,
                     Monto: detalleTransaccion.purchase_units[0].amount.value,
@@ -69,9 +75,9 @@ const Checkout = () => {
                     MetodoPago: 'PayPal',
                     PayerID: detalleTransaccion.payer.payer_id,
                     CorreoPagador: detalleTransaccion.payer.email_address,
-                    Mensaje: detalleTransaccion.purchase_units[0].description
+                    Mensaje: detalleTransaccion.purchase_units[0].description || 'Sin descripción'  // Asegúrate de que Mensaje no sea nulo
                 };
-
+    
                 await guardarTransaccion(transaccionData); // Guardar la transacción en la base de datos
                 await cambiarEstadoACompletada(orden[0].OrdenClienteID); // Cambiar el estado de la orden a completada
                 setPagoCompletado(true);
@@ -82,6 +88,7 @@ const Checkout = () => {
             }
         }
     };
+    
 
     if (!orden) {
         return <div>Cargando la orden...</div>;
@@ -90,8 +97,10 @@ const Checkout = () => {
     // Extraer la primera entrada para obtener la información del cliente
     const clienteInfo = orden.length > 0 ? orden[0] : {};
 
+    const montoEnDolares = convertirColonesADolares(calcularTotalConIVA(calcularSubtotal(orden), calcularIVA(calcularSubtotal(orden))));
+
     return (
-        <PayPalScriptProvider options={{ "client-id": "TU_CLIENT_ID" }}>
+        <PayPalScriptProvider options={{ "client-id": "AbSktME0vnGzzPFiL3sgZyE1Xr812DjU3dfqPCVWE3OAmBuoIzZmKYJxdBKgSTawzqrsmJYEN-QQrQR0" }}>
             <div className="checkout-container">
                 <h2>Resumen de tu Orden</h2>
 
@@ -129,7 +138,7 @@ const Checkout = () => {
                                 return actions.order.create({
                                     purchase_units: [{
                                         amount: {
-                                            value: calcularTotalConIVA(calcularSubtotal(orden), calcularIVA(calcularSubtotal(orden))).toString(),
+                                            value: montoEnDolares.toFixed(2), // Convertir a dólares y redondear a 2 decimales
                                         },
                                     }],
                                 });
