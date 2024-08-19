@@ -1,0 +1,34 @@
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #fffdfd;
+  }
+  
+  .error-image {
+    max-width: 50%;
+    height: auto;
+
+  }
+  
+  h1 {
+    font-size: 3rem;
+    color: #202020;
+    margin-bottom: 0;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    color: #141414;
+    margin-bottom: 20px;
+  }
+  
+  .p-button-outlined {
+    margin-top: 20px;
+    background-color: #d69b67;
+    color: #ffffff;        
+    border: none;     
+  }

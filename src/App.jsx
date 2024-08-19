@@ -19,6 +19,7 @@ import Ordenes from './paginas/Ordenes';
 import Carrito from './paginas/Carrito';
 import Checkout from './paginas/Checkout';
 import { Button } from 'primereact/button'; // Ensure Button is imported here
+import ErrorPage from './componentes/404Error';
 
 
 function App() {
@@ -60,9 +61,10 @@ function App() {
               )}
             </>
           )}
-          <Route path="/login" element={<LoginSesion />} />
+           <Route path="/login" element={<LoginSesion />} />
+           <Route path="*" element={<ErrorPage />} />
         </Routes>
-        <Footer /> {/* Ensure Footer is used correctly */}
+        <Footer /> 
       </div>
     </Router>
   );
