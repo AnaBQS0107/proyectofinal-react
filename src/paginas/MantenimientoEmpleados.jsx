@@ -43,7 +43,7 @@ const MantenimientoE = () => {
             <Button 
                 icon="pi pi-trash" 
                 className=" p-button-eliminar" 
-                onClick={() => deleteEmployee(rowData.Persona_idCedula)} 
+                onClick={() => deleteEmployee(rowData.Cedula)} 
             />
         </React.Fragment>
     );
@@ -53,10 +53,10 @@ const MantenimientoE = () => {
         setIsModalVisible(true);
     };
 
-    const deleteEmployee = async (cedula) => {
+    const deleteEmployee = async (Cedula) => {
         try {
-            await EliminarEmpleado(cedula);
-            setEmployees(employees.filter(emp => emp.Persona_idCedula !== cedula));
+            await EliminarEmpleado(Cedula);
+            setEmployees(employees.filter(emp => emp.Cedula !== Cedula));
             showSuccessToast('Empleado eliminado con éxito.');
         } catch (error) {
             showErrorToast('Error al eliminar empleado.');

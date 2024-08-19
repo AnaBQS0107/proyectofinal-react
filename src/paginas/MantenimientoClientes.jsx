@@ -37,13 +37,13 @@ const MantenimientoC = () => {
         <React.Fragment>
             <Button 
                 icon="pi pi-pencil" 
-                className=" p-button-editar" 
+                className="p-button-editar" 
                 onClick={() => editCliente(rowData)} 
             />
             <Button 
                 icon="pi pi-trash" 
-                className=" p-button-eliminar" 
-                onClick={() => deleteCliente(rowData.idCedula)} 
+                className="p-button-eliminar" 
+                onClick={() => deleteCliente(rowData.Cedula)}  // Changed idCedula to Cedula
             />
         </React.Fragment>
     );
@@ -53,10 +53,10 @@ const MantenimientoC = () => {
         setIsModalVisible(true);
     };
 
-    const deleteCliente = async (idCedula) => {
+    const deleteCliente = async (Cedula) => {  // Changed idCedula to Cedula
         try {
-            await eliminarCliente(idCedula);
-            setClientes(clientes.filter(cliente => cliente.idCedula !== idCedula));
+            await eliminarCliente(Cedula);
+            setClientes(clientes.filter(cliente => cliente.Cedula !== Cedula));  // Changed idCedula to Cedula
             showSuccessToast('Cliente eliminado con éxito.');
         } catch (error) {
             showErrorToast('Error al eliminar cliente.');
