@@ -20,31 +20,31 @@ function RegistroEmpleados() {
     e.preventDefault();
 
     const empleadoNuevo = {
-      idCedula: cedula,
-      nombre,
-      apellido1,
-      apellido2,
-      direccion,
-      telefono,
-      correoElectronico,
-      contraseñaHash: contrasena
+        Cedula: cedula,
+        nombre,
+        apellido1,
+        apellido2,
+        contraseñaHash: contrasena  // This needs to be consistent with your backend's expected fields
     };
 
+    console.log("Sending employee data:", empleadoNuevo);
+
     try {
-      await ingresarEmpleado(empleadoNuevo);
-      toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Empleado registrado correctamente', life: 3000 });
-      setCedula('');
-      setNombre('');
-      setApellido1('');
-      setApellido2('');
-      setDireccion('');
-      setTelefono('');
-      setCorreoElectronico('');
-      setContrasena('');
+        await ingresarEmpleado(empleadoNuevo);
+        toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Empleado registrado correctamente', life: 3000 });
+        setCedula('');
+        setNombre('');
+        setApellido1('');
+        setApellido2('');
+        setDireccion('');
+        setTelefono('');
+        setCorreoElectronico('');
+        setContrasena('');
     } catch (error) {
-      toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo registrar el empleado', life: 3000 });
+        toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo registrar el empleado', life: 3000 });
     }
-  };
+};
+
 
   return (
     <div className="register-form p-grid p-dir-col p-align-center">
