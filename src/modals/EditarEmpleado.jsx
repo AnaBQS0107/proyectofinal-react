@@ -16,14 +16,14 @@ const EditarEmpleado = ({ employee, visible, onHide, onUpdate }) => {
 
     const guardarCambios = async () => {
         try {
-            const { Persona_idCedula, Nombre, Apellido1, Apellido2, ContraseñaHash } = empleado;
+            const { Cedula, Nombre, Apellido1, Apellido2, ContraseñaHash } = empleado;
 
             if (!Nombre || !Apellido1 || !Apellido2 || !ContraseñaHash) {
                 window.toast.show({ severity: 'warn', summary: 'Advertencia', detail: 'Por favor complete todos los campos.' });
                 return;
             }
 
-            await actualizarEmpleado(Persona_idCedula, { Nombre, Apellido1, Apellido2, ContraseñaHash });
+            await actualizarEmpleado(Cedula, { Nombre, Apellido1, Apellido2, ContraseñaHash });
             window.toast.show({ severity: 'success', summary: 'Éxito', detail: 'Empleado actualizado con éxito.' });
             onUpdate(); 
             onHide();

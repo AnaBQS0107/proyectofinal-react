@@ -11,6 +11,12 @@ export const actualizarEmpleado = async (Cedula, empleadoActualizado) => {
   try {
     const { Nombre, Apellido1, Apellido2, ContraseñaHash } =
       empleadoActualizado;
+    console.log("Data being sent for update:", {
+      Nombre,
+      Apellido1,
+      Apellido2,
+      ContraseñaHash,
+    });
     const response = await axios.put(
       `http://localhost:4000/editarEmpleado/${Cedula}`,
       {
@@ -20,6 +26,7 @@ export const actualizarEmpleado = async (Cedula, empleadoActualizado) => {
         ContraseñaHash,
       }
     );
+    console.log("API response:", response.data); // Log the actual API response
     return response.data;
   } catch (error) {
     console.error("Error al actualizar el empleado:", error);

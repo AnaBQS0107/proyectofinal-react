@@ -16,14 +16,14 @@ const EditarCliente = ({ cliente, visible, onHide, onUpdate }) => {
 
     const guardarCambios = async () => {
         try {
-            const { idCedula, Nombre, Apellido1, Apellido2, CorreoElectronico } = clienteData;
+            const { Cedula, Nombre, Apellido1, Apellido2, CorreoElectronico } = clienteData;
 
             if (!Nombre || !Apellido1 || !Apellido2 || !CorreoElectronico) {
                 window.toast.show({ severity: 'warn', summary: 'Advertencia', detail: 'Por favor complete todos los campos.' });
                 return;
             }
 
-            await actualizarCliente(idCedula, { Nombre, Apellido1, Apellido2, CorreoElectronico });
+            await actualizarCliente(Cedula, { Nombre, Apellido1, Apellido2, CorreoElectronico });
             window.toast.show({ severity: 'success', summary: 'Éxito', detail: 'Cliente actualizado con éxito.' });
             onUpdate();
             onHide();

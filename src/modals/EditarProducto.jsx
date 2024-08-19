@@ -32,14 +32,14 @@ const EditarProducto = ({ product, visible, onHide, onUpdate }) => {
 
     const guardarCambios = async () => {
         try {
-            const { idProducto, Nombre, Imagen, Stock, Precio, PrecioIVA, CatalogoEstantes_idCatalogoEstantes } = producto;
+            const { ProductoID, Nombre, Imagen, Stock, Precio, PrecioIVA, CatalogoEstantes_idCatalogoEstantes } = producto;
 
             if (!Nombre || !Stock || !Precio || !PrecioIVA || !CatalogoEstantes_idCatalogoEstantes) {
                 window.toast.show({ severity: 'warn', summary: 'Advertencia', detail: 'Por favor complete todos los campos.' });
                 return;
             }
 
-            await actualizarProducto(idProducto, { Nombre, Imagen, Stock, Precio, PrecioIVA, CatalogoEstantes_idCatalogoEstantes });
+            await actualizarProducto(ProductoID, { Nombre, Imagen, Stock, Precio, PrecioIVA, CatalogoEstantes_idCatalogoEstantes });
             window.toast.show({ severity: 'success', summary: 'Éxito', detail: 'Producto actualizado con éxito.' });
             onUpdate();
             onHide();

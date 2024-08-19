@@ -19,11 +19,13 @@ const MantenimientoE = () => {
     const fetchEmployees = async () => {
         try {
             const data = await ObtenerEmpleados();
-            setEmployees(data);
+            console.log('Fetched employees:', data);
+            setEmployees(data);  // This updates the state with the fetched employees
         } catch (error) {
             console.error('Error al cargar empleados:', error);
         }
     };
+    
 
     const showSuccessToast = (message) => {
         window.toast.show({ severity: 'success', summary: 'Éxito', detail: message });
@@ -64,9 +66,16 @@ const MantenimientoE = () => {
         }
     };
 
-    const handleUpdate = () => {
-        fetchEmployees();  
+    const handleUpdate = async () => {
+        try {
+            const data = await fetchEmployees();  // Assuming this fetches the updated data
+            console.log('Updated employees data:', data);  // This should now log the updated employees list
+        } catch (error) {
+            console.error('Error while fetching updated employees:', error);
+        }
     };
+    
+      
 
     return (
         <div className="crud-table-container">
